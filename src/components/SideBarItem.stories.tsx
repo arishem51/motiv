@@ -15,17 +15,6 @@ export const Default = Story.bind({});
 
 Default.args = {
   onClick: () => console.log("default click"),
-  children: (
-    <>
-      <Icons.Dashboard />
-      <span
-        style={{
-          color: "var(--color-dark2)",
-          fontWeight: 500,
-        }}
-      >
-        Dashboard
-      </span>
-    </>
-  ),
+  icon: <Icons.Dashboard />,
+  title: "Dashboard",
 };

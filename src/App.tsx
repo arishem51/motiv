@@ -1,5 +1,10 @@
 function App() {
-  return <div>Hello World</div>;
+  return (
+    <div>
+      <div>Hello World</div>
+      <div>Flex</div>
+    </div>
+  );
 }
 
 export default App;

@@ -2,12 +2,13 @@ import React from "react";
 import styled from "styled-components";
 
 type Props = {
+  icon: React.ReactNode;
+  title: string;
   onClick: () => void;
   active?: boolean;
-  children: React.ReactNode;
 };
 
-const Wrapper = styled.div<{ active?: boolean }>`
+const Wrapper = styled.div<{ active: boolean }>`
   display: flex;
   padding: var(--size-8);
   border-radius: 6px;
@@ -22,8 +23,19 @@ const Wrapper = styled.div<{ active?: boolean }>`
   align-items: center;
 `;
 
-const SideBarItem = (props: Props) => {
-  return <Wrapper {...props} />;
+const Text = styled.span`
+  color: var(--color-dark2);
+  user-select: none;
+  font-weight: 500;
+`;
+
+const SideBarItem = ({ icon, title, onClick, active = false }: Props) => {
+  return (
+    <Wrapper onClick={onClick} active={active}>
+      {icon}
+      <Text>{title}</Text>
+    </Wrapper>
+  );
 };
 
 export default SideBarItem;

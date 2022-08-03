@@ -11,7 +11,7 @@ export const COLORS = {
   orange: "#FF764C",
 } as const;
 
-export const SIZE = [8, 16, 24, 32, 64] as const;
+export const SIZE = [8, 16, 24, 30, 32, 64] as const;
 
 export const createSizeVariables = () => {
   return SIZE.map((item) => {
