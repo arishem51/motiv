@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-type Props = {
+export type SideBarItemProps = {
   icon: React.ReactNode;
   title: string;
   onClick: () => void;
@@ -29,7 +29,12 @@ const Text = styled.span`
   font-weight: 500;
 `;
 
-const SideBarItem = ({ icon, title, onClick, active = false }: Props) => {
+const SideBarItem = ({
+  icon,
+  title,
+  onClick,
+  active = false,
+}: SideBarItemProps) => {
   return (
     <Wrapper onClick={onClick} active={active}>
       {icon}
