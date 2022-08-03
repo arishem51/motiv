@@ -58,6 +58,7 @@
     ]
   },
   "devDependencies": {
+    "@etchteam/storybook-addon-css-variables-theme": "^1.2.1",
     "@storybook/addon-actions": "^6.5.9",
     "@storybook/addon-essentials": "^6.5.9",
     "@storybook/addon-interactions": "^6.5.9",

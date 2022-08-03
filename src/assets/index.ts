@@ -1,2 +1,3 @@
 import { ReactComponent as Message } from "./message.svg";
-export const Icons = { Message };
+import { ReactComponent as Dashboard } from "./dashboard.svg";
+export const Icons = { Message, Dashboard };

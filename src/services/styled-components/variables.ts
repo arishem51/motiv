@@ -1,5 +1,6 @@
 export const COLORS = {
   dark: "#242731",
+  dark2: "#5F6165",
   white: "#E0E4E7",
   purple: "#A162F7",
   blue: "#2884FF",
@@ -10,3 +11,15 @@ export const COLORS = {
 } as const;
 
 export const SIZE = [8, 16, 24, 32, 64] as const;
+
+export const createSizeVariables = () => {
+  return SIZE.map((item) => {
+    return `--size-${item}: ${item}px;`;
+  });
+};
+
+export const createColorVariables = () => {
+  return Object.entries(COLORS).map(([name, value]) => {
+    return `--color-${name}: ${value};`;
+  });
+};
