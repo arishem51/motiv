@@ -16,4 +16,5 @@ export const Default = Story.bind({});
 Default.args = {
   icon: <Icons.Dashboard />,
   title: "Dashboard",
+  onClick: () => console.log("default click"),
 };
