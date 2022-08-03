@@ -14,7 +14,18 @@ const Story: ComponentStory<typeof SideBarItem> = (args) => (
 export const Default = Story.bind({});
 
 Default.args = {
-  icon: <Icons.Dashboard />,
-  title: "Dashboard",
   onClick: () => console.log("default click"),
+  children: (
+    <>
+      <Icons.Dashboard />
+      <span
+        style={{
+          color: "var(--color-dark2)",
+          fontWeight: 500,
+        }}
+      >
+        Dashboard
+      </span>
+    </>
+  ),
 };
