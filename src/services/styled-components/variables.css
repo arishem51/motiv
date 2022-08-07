@@ -18,3 +18,8 @@
   --size-32: 32px;
   --size-64: 64px;
 }
+body {
+  font-family: "DM Sans", sans-serif;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
