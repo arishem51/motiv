@@ -11,6 +11,14 @@ const Story: ComponentStory<typeof SideBar> = (args) => <SideBar {...args} />;
 
 export const Default = Story.bind({});
 
+Default.decorators = [
+  (Story) => (
+    <div style={{ display: "flex" }}>
+      <Story />
+    </div>
+  ),
+];
+
 Default.args = {
   listItem: [
     {

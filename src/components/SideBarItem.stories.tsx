@@ -18,3 +18,11 @@ Default.args = {
   icon: <Icons.Dashboard />,
   title: "Dashboard",
 };
+
+Default.decorators = [
+  (Story) => (
+    <div style={{ display: "flex" }}>
+      <Story />
+    </div>
+  ),
+];
