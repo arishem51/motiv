@@ -1,11 +1,11 @@
 import React from "react";
+import { Link as LinkRRD, useMatch } from "react-router-dom";
 import styled from "styled-components";
 
 export type SideBarItemProps = {
   icon: React.ReactNode;
   title: string;
-  onClick: () => void;
-  active?: boolean;
+  routeName: string;
 };
 
 const Wrapper = styled.div<{ active: boolean }>`
@@ -23,22 +23,19 @@ const Wrapper = styled.div<{ active: boolean }>`
   align-items: center;
 `;
 
-const Text = styled.span`
+const Link = styled(LinkRRD)`
   color: var(--color-dark2);
   user-select: none;
   font-weight: 500;
+  text-decoration: none;
 `;
 
-const SideBarItem = ({
-  icon,
-  title,
-  onClick,
-  active = false,
-}: SideBarItemProps) => {
+const SideBarItem = ({ icon, title, routeName }: SideBarItemProps) => {
+  const active = useMatch(routeName);
   return (
-    <Wrapper onClick={onClick} active={active}>
+    <Wrapper active={!!active}>
       {icon}
-      <Text>{title}</Text>
+      <Link to={routeName}>{title}</Link>
     </Wrapper>
   );
 };

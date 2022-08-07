@@ -1,10 +1,17 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { withRouter } from "storybook-addon-react-router-v6";
 import { Icons } from "../assets";
 import SideBar from "./SideBar";
 
 export default {
   component: SideBar,
   title: "Side Bar",
+  decorators: [withRouter],
+  parameters: {
+    reactRouter: {
+      routePath: "/",
+    },
+  },
 } as ComponentMeta<typeof SideBar>;
 
 const Story: ComponentStory<typeof SideBar> = (args) => <SideBar {...args} />;
@@ -24,47 +31,47 @@ Default.args = {
     {
       title: "Dashboard",
       icon: <Icons.Dashboard />,
-      onClick: () => console.log("123"),
+      routeName: "/",
     },
     {
       title: "Assets",
       icon: <Icons.Assets />,
-      onClick: () => console.log("123"),
+      routeName: "assets",
     },
     {
       title: "Dashboard",
       icon: <Icons.Dashboard />,
-      onClick: () => console.log("123"),
+      routeName: "assets",
     },
     {
       title: "Assets",
       icon: <Icons.Assets />,
-      onClick: () => console.log("123"),
+      routeName: "assets",
     },
     {
       title: "Dashboard",
       icon: <Icons.Dashboard />,
-      onClick: () => console.log("123"),
+      routeName: "assets",
     },
     {
       title: "Assets",
+      routeName: "assets",
       icon: <Icons.Assets />,
-      onClick: () => console.log("123"),
     },
     {
       title: "Dashboard",
+      routeName: "assets",
       icon: <Icons.Dashboard />,
-      onClick: () => console.log("123"),
     },
     {
       title: "Assets",
+      routeName: "assets",
       icon: <Icons.Assets />,
-      onClick: () => console.log("123"),
     },
     {
       title: "Assets",
+      routeName: "assets",
       icon: <Icons.Assets />,
-      onClick: () => console.log("123"),
     },
   ],
 };

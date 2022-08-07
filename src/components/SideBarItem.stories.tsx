@@ -1,10 +1,19 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Icons } from "../assets";
 import SideBarItem from "./SideBarItem";
+import { withRouter } from "storybook-addon-react-router-v6";
 
 export default {
   component: SideBarItem,
   title: "SideBarItem",
+  decorators: [
+    withRouter,
+    (Story) => (
+      <div style={{ display: "flex" }}>
+        <Story />
+      </div>
+    ),
+  ],
 } as ComponentMeta<typeof SideBarItem>;
 
 const Story: ComponentStory<typeof SideBarItem> = (args) => (
@@ -14,15 +23,16 @@ const Story: ComponentStory<typeof SideBarItem> = (args) => (
 export const Default = Story.bind({});
 
 Default.args = {
-  onClick: () => console.log("default click"),
   icon: <Icons.Dashboard />,
   title: "Dashboard",
+  routeName: "/",
 };
 
-Default.decorators = [
-  (Story) => (
-    <div style={{ display: "flex" }}>
-      <Story />
-    </div>
-  ),
-];
+Default.parameters = {
+  reactRouter: {
+    routePath: "/users/:userId",
+    routeParams: { userId: "42" },
+    searchParams: { tab: "activityLog" },
+    routeState: { fromPage: "homePage" },
+  },
+};
