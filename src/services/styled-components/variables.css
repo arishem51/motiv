@@ -6,8 +6,10 @@
   --color-dark: #242731;
   --color-dark2: #5f6165;
   --color-dark4: #7c7c8d;
-  --color-white: #e0e4e7;
+  --color-white4: #e0e4e7;
   --color-white2: #f3f5f8;
+  --color-white3: #e6e8ec;
+  --color-white: #ffffff;
   --color-purple: #a162f7;
   --color-blue: #2884ff;
   --color-yellow: #f6cc0d;
@@ -18,12 +20,12 @@
   --size-10: 10px;
   --size-12: 12px;
   --size-16: 16px;
+  --size-18: 18px;
   --size-24: 24px;
   --size-30: 30px;
   --size-32: 32px;
   --size-64: 64px;
 }
-
 body {
   font-family: "DM Sans", sans-serif;
 }
