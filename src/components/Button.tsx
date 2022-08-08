@@ -1,10 +1,10 @@
-import { ButtonHTMLAttributes } from "react";
+import { ButtonHTMLAttributes, isValidElement, ReactNode } from "react";
 import styled from "styled-components";
 
 type Props = {
   title?: string;
   variant?: "primary" | "secondary";
-  icon?: React.ReactNode;
+  icon?: ReactNode;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const Wrapper = styled.button<Props>`
@@ -39,7 +39,7 @@ const Button = ({ title, icon, ...props }: Props) => {
   return (
     <Wrapper {...props}>
       <Content>
-        {icon}
+        {icon && isValidElement(icon) && icon}
         <Text variant={props.variant}>{title}</Text>
       </Content>
     </Wrapper>
