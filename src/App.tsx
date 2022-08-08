@@ -3,6 +3,7 @@ function App() {
     <div>
       <div>Hello World</div>
       <div>Flex</div>
+      <h1>Get's started</h1>
     </div>
   );
 }

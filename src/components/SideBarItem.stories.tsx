@@ -30,9 +30,6 @@ Default.args = {
 
 Default.parameters = {
   reactRouter: {
-    routePath: "/users/:userId",
-    routeParams: { userId: "42" },
-    searchParams: { tab: "activityLog" },
-    routeState: { fromPage: "homePage" },
+    routePath: "/",
   },
 };
