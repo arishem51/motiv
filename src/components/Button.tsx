@@ -1,10 +1,16 @@
-import { ButtonHTMLAttributes, isValidElement, ReactNode } from "react";
+import {
+  ButtonHTMLAttributes,
+  CSSProperties,
+  isValidElement,
+  ReactNode,
+} from "react";
 import styled from "styled-components";
 
 type Props = {
   title?: string;
   variant?: "primary" | "secondary";
   icon?: ReactNode;
+  textStyle?: CSSProperties;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const Wrapper = styled.button<Props>`
@@ -35,12 +41,14 @@ const Content = styled.div`
   align-items: center;
 `;
 
-const Button = ({ title, icon, ...props }: Props) => {
+const Button = ({ title, icon, textStyle, ...props }: Props) => {
   return (
     <Wrapper {...props}>
       <Content>
         {icon && isValidElement(icon) && icon}
-        <Text variant={props.variant}>{title}</Text>
+        <Text style={textStyle} variant={props.variant}>
+          {title}
+        </Text>
       </Content>
     </Wrapper>
   );

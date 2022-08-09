@@ -13,6 +13,9 @@ export const Default = Story.bind({});
 
 Default.args = {
   title: "Button",
+  textStyle: {
+    fontWeight: 700,
+  },
 };
 
 export const GoogleButton = Story.bind({});
