@@ -17,12 +17,14 @@
   --color-red: #ff6370;
   --color-green: #70cf97;
   --color-orange: #ff764c;
+  --color-border: #b1b5c3;
   --size-8: 8px;
   --size-10: 10px;
   --size-12: 12px;
   --size-14: 14px;
   --size-16: 16px;
   --size-18: 18px;
+  --size-20: 20px;
   --size-24: 24px;
   --size-30: 30px;
   --size-32: 32px;
@@ -30,6 +32,8 @@
 }
 body {
   font-family: "DM Sans", sans-serif;
+  font-weight: 400;
+  font-size: var(--size-16);
 }
 
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");

@@ -20,6 +20,8 @@ export const GlobalStyle = createGlobalStyle`
 html, body {
   height: 100%;
   font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: var(--size-16);
 }
 /*
   Typographic tweaks!
