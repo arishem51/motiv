@@ -1,7 +1,10 @@
+import { InputHTMLAttributes } from "react";
 import styled from "styled-components";
 import { Icons } from "../assets";
 
-const Label = styled.label`
+type Props = InputHTMLAttributes<HTMLInputElement>;
+
+const Wrapper = styled.div`
   position: relative;
   width: 16px;
   height: 16px;
@@ -19,23 +22,19 @@ const Input = styled.input`
 
 const CheckedIcon = styled(Icons.Check)`
   position: absolute;
-  width: var(--size-14);
-  height: var(--size-14);
+  width: var(--size-12);
+  height: var(--size-12);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 `;
 
-type Props = {
-  checked?: boolean;
-};
-
-const Checkbox = ({ checked = false }: Props) => {
+const Checkbox = ({ checked, ...props }: Props) => {
   return (
-    <Label htmlFor="checkbox">
+    <Wrapper>
       {checked && <CheckedIcon fill="var(--color-checkbox)" />}
-      <Input id="checkbox" type="checkbox" />
-    </Label>
+      <Input id="checkbox" type="checkbox" checked={checked} {...props} />
+    </Wrapper>
   );
 };
 
