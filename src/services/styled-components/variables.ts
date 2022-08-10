@@ -14,9 +14,10 @@ export const COLORS = {
   green: "#70CF97",
   orange: "#FF764C",
   border: "#B1B5C3",
+  checkbox: "#B1B5C4",
 } as const;
 
-export const SIZE = [8, 10, 12, 14, 16, 18, 20, 24, 30, 32, 64] as const;
+export const SIZE = [4, 8, 10, 12, 14, 16, 18, 20, 24, 30, 32, 64] as const;
 
 export const createSizeVariables = () => {
   return SIZE.map((item) => {

@@ -4,5 +4,14 @@ import { ReactComponent as Logo } from "./logo.svg";
 import { ReactComponent as Assets } from "./assets.svg";
 import { ReactComponent as Google } from "./google.svg";
 import { ReactComponent as Facebook } from "./facebook.svg";
+import { ReactComponent as Check } from "./check.svg";
 
-export const Icons = { Message, Dashboard, Logo, Assets, Google, Facebook };
+export const Icons = {
+  Message,
+  Dashboard,
+  Logo,
+  Assets,
+  Google,
+  Facebook,
+  Check,
+};
