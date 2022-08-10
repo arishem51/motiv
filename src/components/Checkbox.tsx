@@ -18,6 +18,7 @@ const Input = styled.input`
   width: 100%;
   height: 100%;
   appearance: none;
+  cursor: pointer;
 `;
 
 const CheckedIcon = styled(Icons.Check)`
@@ -27,6 +28,7 @@ const CheckedIcon = styled(Icons.Check)`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  cursor: pointer;
 `;
 
 const Checkbox = ({ checked, ...props }: Props) => {
