@@ -1,6 +1,7 @@
 * {
   margin: 0;
   box-sizing: border-box;
+  padding: 0;
 }
 
 :root {
@@ -8,10 +9,11 @@
   --color-dark2: #5f6165;
   --color-dark4: #7c7c8d;
   --color-dark5: #777e91;
-  --color-white4: #e0e4e7;
+  --color-white: #ffffff;
   --color-white2: #f3f5f8;
   --color-white3: #e6e8ec;
-  --color-white: #ffffff;
+  --color-white4: #e0e4e7;
+  --color-white5: #f4f5f6;
   --color-purple: #a162f7;
   --color-blue: #2884ff;
   --color-yellow: #f6cc0d;
@@ -20,6 +22,7 @@
   --color-orange: #ff764c;
   --color-border: #b1b5c3;
   --color-checkbox: #b1b5c4;
+  --color-facebook: #4776d0;
   --size-4: 4px;
   --size-8: 8px;
   --size-10: 10px;
@@ -31,8 +34,11 @@
   --size-24: 24px;
   --size-30: 30px;
   --size-32: 32px;
+  --size-40: 40px;
+  --size-54: 54px;
   --size-64: 64px;
 }
+
 body {
   font-family: "DM Sans", sans-serif;
   font-weight: 400;

@@ -18,7 +18,9 @@ const Input = styled.input`
   color: var(--color-dark5);
 `;
 
-const Label = styled.label``;
+const Label = styled.label`
+  cursor: text;
+`;
 
 const FormInput = ({ containerStyle, ...props }: Props) => {
   return (

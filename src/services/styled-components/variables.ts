@@ -3,10 +3,11 @@ export const COLORS = {
   dark2: "#5F6165",
   dark4: "#7C7C8D",
   dark5: "#777E91",
-  white4: "#E0E4E7",
+  white: "#FFFFFF",
   white2: "#F3F5F8",
   white3: "#e6e8ec",
-  white: "#FFFFFF",
+  white4: "#E0E4E7",
+  white5: "#f4f5f6",
   purple: "#A162F7",
   blue: "#2884FF",
   yellow: "#F6CC0D",
@@ -15,9 +16,12 @@ export const COLORS = {
   orange: "#FF764C",
   border: "#B1B5C3",
   checkbox: "#B1B5C4",
+  facebook: "#4776d0",
 } as const;
 
-export const SIZE = [4, 8, 10, 12, 14, 16, 18, 20, 24, 30, 32, 64] as const;
+export const SIZE = [
+  4, 8, 10, 12, 14, 16, 18, 20, 24, 30, 32, 40, 54, 64,
+] as const;
 
 export const createSizeVariables = () => {
   return SIZE.map((item) => {

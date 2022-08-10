@@ -6,19 +6,19 @@ import {
 } from "react";
 import styled from "styled-components";
 
-type Props = {
+export type ButtonProps = {
   title?: string;
   variant?: "primary" | "secondary";
   icon?: ReactNode;
   textStyle?: CSSProperties;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-const Wrapper = styled.button<Props>`
+const Wrapper = styled.button<ButtonProps>`
   background-color: ${(props) =>
     props.variant === "secondary"
       ? "transparent"
       : props.style?.backgroundColor || "var(--color-purple)"};
-  padding: var(--size-18) var(--size-30);
+  padding: var(--size-18) var(--size-24);
   border-radius: var(--size-8);
   border: 1px solid
     ${(props) =>
@@ -26,6 +26,7 @@ const Wrapper = styled.button<Props>`
         ? "var(--color-white3)"
         : props.style?.backgroundColor || "transparent"};
   cursor: pointer;
+  min-width: 246px;
 `;
 
 const Text = styled.h1<{ variant?: "secondary" | "primary" }>`
@@ -39,9 +40,10 @@ const Content = styled.div`
   display: flex;
   gap: var(--size-12);
   align-items: center;
+  justify-content: center;
 `;
 
-const Button = ({ title, icon, textStyle, ...props }: Props) => {
+const Button = ({ title, icon, textStyle, ...props }: ButtonProps) => {
   return (
     <Wrapper {...props}>
       <Content>

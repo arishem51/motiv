@@ -1,4 +1,7 @@
+import { HTMLAttributes } from "react";
 import styled from "styled-components";
+
+type Props = HTMLAttributes<HTMLDivElement>;
 
 const Wrapper = styled.div`
   display: flex;
@@ -18,9 +21,9 @@ const Rectangle = styled.div`
   flex: 1;
 `;
 
-const Divider = () => {
+const Divider = (props: Props) => {
   return (
-    <Wrapper>
+    <Wrapper {...props}>
       <Rectangle />
       <Text>or</Text>
       <Rectangle />
