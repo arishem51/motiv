@@ -14,6 +14,7 @@ import { ReactComponent as ShoppingBag } from "./shoppingBag.svg";
 import { ReactComponent as Settings } from "./settings.svg";
 import { ReactComponent as SignOut } from "./signOut.svg";
 import { ReactComponent as Search } from "./search.svg";
+import { ReactComponent as Notification } from "./notification.svg";
 
 export const Icons = {
   Message,
@@ -32,4 +33,5 @@ export const Icons = {
   Settings,
   SignOut,
   Search,
+  Notification,
 };
