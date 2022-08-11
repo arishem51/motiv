@@ -2,9 +2,15 @@ import styled from "styled-components";
 import { Icons } from "../assets";
 import SideBar from "../components/SideBar";
 import { SideBarItemProps } from "../components/SideBarItem";
+import TopBar from "../components/TopBar";
 
 const Wrapper = styled.div`
   display: flex;
+`;
+
+const Content = styled.div`
+  flex: 1;
+  background-color: var(--color-white6);
 `;
 
 const DATA: SideBarItemProps[] = [
@@ -64,6 +70,9 @@ const RequireAuth = () => {
   return (
     <Wrapper>
       <SideBar listItem={DATA} />
+      <Content>
+        <TopBar />
+      </Content>
     </Wrapper>
   );
 };

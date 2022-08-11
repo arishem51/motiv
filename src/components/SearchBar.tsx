@@ -9,6 +9,7 @@ const Label = styled.label`
   gap: var(--size-12);
   align-items: center;
   padding: var(--size-12);
+  min-width: 358px;
   border-radius: var(--size-8);
   background-color: var(--color-white6);
   caret-color: var(--color-orange);
