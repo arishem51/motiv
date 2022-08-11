@@ -11,6 +11,8 @@ import { ReactComponent as Fencing } from "./fencing.svg";
 import { ReactComponent as Comment } from "./comment.svg";
 import { ReactComponent as ShoppingCart } from "./shoppingCart.svg";
 import { ReactComponent as ShoppingBag } from "./shoppingBag.svg";
+import { ReactComponent as Settings } from "./settings.svg";
+import { ReactComponent as SignOut } from "./ignOut.svg";
 
 export const Icons = {
   Message,
@@ -26,4 +28,6 @@ export const Icons = {
   Fencing,
   Car,
   Comment,
+  Settings,
+  SignOut,
 };
