@@ -1,3 +1,4 @@
+import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import Divider from "../../components/Divider";
 import FormInput from "../../components/FormInput";
@@ -52,6 +53,16 @@ const Text = styled.p`
 `;
 
 const SignIn = () => {
+  const { register, handleSubmit } =
+    useForm<{
+      email: string;
+      password: string;
+    }>();
+
+  const handleClick = handleSubmit((data) => {
+    console.log({ data });
+  });
+
   return (
     <Wrapper>
       <Content>
@@ -64,15 +75,15 @@ const SignIn = () => {
         <FormWrapper>
           <Form>
             <Text>Email</Text>
-            <FormInput placeholder="hungpv@gmail.com" />
+            <FormInput placeholder="hungpv@gmail.com" {...register("email")} />
           </Form>
           <Form>
             <Text>Password</Text>
-            <FormInput placeholder="********" />
+            <FormInput placeholder="********" {...register("password")} />
           </Form>
         </FormWrapper>
         <FormOptions />
-        <OnboardingButton title="Sign In" />
+        <OnboardingButton title="Sign In" onClick={handleClick} />
       </Content>
     </Wrapper>
   );

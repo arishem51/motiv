@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, CSSProperties } from "react";
+import { InputHTMLAttributes, CSSProperties, forwardRef } from "react";
 import styled from "styled-components";
 
 type Props = {
@@ -22,14 +22,16 @@ const Label = styled.label`
   cursor: text;
 `;
 
-const FormInput = ({ containerStyle, ...props }: Props) => {
-  return (
-    <Label htmlFor="input">
-      <Wrapper style={containerStyle}>
-        <Input id="input" {...props} />
-      </Wrapper>
-    </Label>
-  );
-};
+const FormInput = forwardRef<HTMLInputElement, Props>(
+  ({ containerStyle, ...props }, ref) => {
+    return (
+      <Label htmlFor="input">
+        <Wrapper style={containerStyle}>
+          <Input id="input" {...props} ref={ref} />
+        </Wrapper>
+      </Label>
+    );
+  }
+);
 
 export default FormInput;
