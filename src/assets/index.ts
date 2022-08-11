@@ -13,6 +13,7 @@ import { ReactComponent as ShoppingCart } from "./shoppingCart.svg";
 import { ReactComponent as ShoppingBag } from "./shoppingBag.svg";
 import { ReactComponent as Settings } from "./settings.svg";
 import { ReactComponent as SignOut } from "./signOut.svg";
+import { ReactComponent as Search } from "./search.svg";
 
 export const Icons = {
   Message,
@@ -30,4 +31,5 @@ export const Icons = {
   Comment,
   Settings,
   SignOut,
+  Search,
 };
