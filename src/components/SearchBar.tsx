@@ -11,7 +11,7 @@ const Label = styled.label`
   padding: var(--size-12);
   min-width: 358px;
   border-radius: var(--size-8);
-  background-color: var(--color-white6);
+  background-color: var(--color-white7);
   caret-color: var(--color-orange);
   cursor: text;
 `;
@@ -21,7 +21,7 @@ const Input = styled.input`
   border: none;
   outline: none;
   color: var(--color-dark4);
-  background-color: var(--color-white6);
+  background-color: var(--color-white7);
 `;
 
 const SearchBar = (props: Props) => {
