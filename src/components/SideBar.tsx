@@ -26,7 +26,7 @@ const Space = styled.div`
   flex: 1;
 `;
 
-const SideBar = ({ listItem, indexToSpace = 7 }: Props) => {
+const SideBar = ({ listItem, indexToSpace = 8 }: Props) => {
   const renderItem = () => {
     return listItem.map((item, index) => (
       <>

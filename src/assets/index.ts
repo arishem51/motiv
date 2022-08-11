@@ -12,7 +12,7 @@ import { ReactComponent as Comment } from "./comment.svg";
 import { ReactComponent as ShoppingCart } from "./shoppingCart.svg";
 import { ReactComponent as ShoppingBag } from "./shoppingBag.svg";
 import { ReactComponent as Settings } from "./settings.svg";
-import { ReactComponent as SignOut } from "./ignOut.svg";
+import { ReactComponent as SignOut } from "./signOut.svg";
 
 export const Icons = {
   Message,

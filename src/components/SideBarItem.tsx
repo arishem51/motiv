@@ -1,5 +1,5 @@
 import React from "react";
-import { Link as LinkRRD, useMatch } from "react-router-dom";
+import { useMatch, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 export type SideBarItemProps = {
@@ -23,7 +23,7 @@ const Wrapper = styled.div<{ active: boolean }>`
   align-items: center;
 `;
 
-const Link = styled(LinkRRD)`
+const Text = styled.p`
   color: var(--color-dark2);
   user-select: none;
   font-weight: 500;
@@ -32,10 +32,18 @@ const Link = styled(LinkRRD)`
 
 const SideBarItem = ({ icon, title, routeName }: SideBarItemProps) => {
   const active = useMatch(routeName);
+  const navigate = useNavigate();
+  const handleClick = () => {
+    if (routeName === "signOut") {
+      console.log("Sign Out");
+      return;
+    }
+    navigate(`/${routeName}`);
+  };
   return (
-    <Wrapper active={!!active}>
+    <Wrapper active={!!active} onClick={handleClick}>
       {icon}
-      <Link to={routeName}>{title}</Link>
+      <Text>{title}</Text>
     </Wrapper>
   );
 };
