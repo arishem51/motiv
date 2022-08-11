@@ -1,3 +1,4 @@
+import { getAuth, signOut } from "firebase/auth";
 import React from "react";
 import { useMatch, useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -34,8 +35,9 @@ const SideBarItem = ({ icon, title, routeName }: SideBarItemProps) => {
   const active = useMatch(routeName);
   const navigate = useNavigate();
   const handleClick = () => {
-    if (!routeName) {
-      console.log("Sign Out");
+    if (routeName === "signout") {
+      const auth = getAuth();
+      signOut(auth);
       return;
     }
     navigate(routeName);

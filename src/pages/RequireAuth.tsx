@@ -1,9 +1,12 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Icons } from "../assets";
 import SideBar from "../components/SideBar";
 import { SideBarItemProps } from "../components/SideBarItem";
 import TopBar from "../components/TopBar";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useState } from "react";
+import Loading from "../components/Loading";
 
 const Wrapper = styled.div`
   display: flex;
@@ -63,11 +66,25 @@ const DATA: SideBarItemProps[] = [
   {
     icon: <Icons.SignOut />,
     title: "Log out",
-    routeName: "",
+    routeName: "signout",
   },
 ];
 
 const RequireAuth = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
+  const auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (!user) {
+      navigate("/SignIn");
+    }
+    setIsLoading(false);
+  });
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <Wrapper>
       <SideBar listItem={DATA} />
