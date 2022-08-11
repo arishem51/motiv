@@ -1,12 +1,13 @@
 import styled from "styled-components";
-import Button from "../../components/Button";
-import Checkbox from "../../components/Checkbox";
 import Divider from "../../components/Divider";
 import FormInput from "../../components/FormInput";
 import OnboardingText from "../../components/OnboardingText";
-import { FacebookButton } from "./components/FacebookButton";
-import { GoogleButton } from "./components/GoogleButton";
-import { SignInButton } from "./components/SignInButton";
+import {
+  OnboardingButton,
+  FacebookButton,
+  GoogleButton,
+  FormOptions,
+} from "./components";
 
 const Wrapper = styled.div`
   display: flex;
@@ -50,30 +51,6 @@ const Text = styled.p`
   font-weight: 500;
 `;
 
-const ForgotPasswordText = styled.p`
-  color: var(--color-purple);
-  font-weight: 500;
-  cursor: pointer;
-`;
-
-const FormOptions = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-top: var(--size-24);
-  margin-bottom: var(--size-30);
-`;
-
-const CheckboxWrapper = styled.div`
-  display: flex;
-  gap: var(--size-12);
-  align-items: center;
-`;
-
-const RememberMeText = styled.p`
-  color: var(--color-checkbox);
-  font-weight: 500;
-`;
-
 const SignIn = () => {
   return (
     <Wrapper>
@@ -94,14 +71,8 @@ const SignIn = () => {
             <FormInput placeholder="********" />
           </Form>
         </FormWrapper>
-        <FormOptions>
-          <CheckboxWrapper>
-            <Checkbox />
-            <RememberMeText>Remember Me</RememberMeText>
-          </CheckboxWrapper>
-          <ForgotPasswordText>Forgot your password?</ForgotPasswordText>
-        </FormOptions>
-        <SignInButton />
+        <FormOptions />
+        <OnboardingButton title="Sign In" />
       </Content>
     </Wrapper>
   );

@@ -43,7 +43,7 @@ const OnboardingText = ({ isSignIn }: Props) => {
     <Wrapper>
       <H1>Get's Started.</H1>
       <WrapperSubTxt>
-        <H3>Don't have an account?</H3>
+        <H3>{isSignIn ? "Don't have an account?" : "Have an account?"}</H3>
         <Link to={linkTo}>
           <PurpleH3>{isSignIn ? "Sign Up" : "Sign In"}</PurpleH3>
         </Link>
