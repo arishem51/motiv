@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 import { Icons } from "../assets";
 import SideBar from "../components/SideBar";
@@ -22,47 +23,47 @@ const DATA: SideBarItemProps[] = [
   {
     icon: <Icons.Assets />,
     title: "Assets",
-    routeName: "assets",
+    routeName: "/assets",
   },
   {
     icon: <Icons.Car />,
     title: "Booking",
-    routeName: "booking",
+    routeName: "/booking",
   },
   {
     icon: <Icons.ShoppingBag />,
     title: "Sell Cars",
-    routeName: "sell",
+    routeName: "/sell",
   },
   {
     icon: <Icons.ShoppingCart />,
     title: "Buy Cars",
-    routeName: "buy",
+    routeName: "/buy",
   },
   {
     icon: <Icons.Fencing />,
     title: "Services",
-    routeName: "services",
+    routeName: "/services",
   },
   {
     icon: <Icons.Calendar />,
     title: "Calendar",
-    routeName: "calendar",
+    routeName: "/calendar",
   },
   {
     icon: <Icons.Comment />,
     title: "Messages",
-    routeName: "messages",
+    routeName: "/messages",
   },
   {
     icon: <Icons.Settings />,
     title: "Settings",
-    routeName: "settings",
+    routeName: "/settings",
   },
   {
     icon: <Icons.SignOut />,
     title: "Log out",
-    routeName: "/signOut",
+    routeName: "",
   },
 ];
 
@@ -72,6 +73,7 @@ const RequireAuth = () => {
       <SideBar listItem={DATA} />
       <Content>
         <TopBar />
+        <Outlet />
       </Content>
     </Wrapper>
   );

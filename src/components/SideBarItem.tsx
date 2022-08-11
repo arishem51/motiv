@@ -34,11 +34,11 @@ const SideBarItem = ({ icon, title, routeName }: SideBarItemProps) => {
   const active = useMatch(routeName);
   const navigate = useNavigate();
   const handleClick = () => {
-    if (routeName === "signOut") {
+    if (!routeName) {
       console.log("Sign Out");
       return;
     }
-    navigate(`/${routeName}`);
+    navigate(routeName);
   };
   return (
     <Wrapper active={!!active} onClick={handleClick}>

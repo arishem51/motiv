@@ -4,7 +4,6 @@ import SideBarItem, { SideBarItemProps } from "./SideBarItem";
 
 type Props = {
   listItem: SideBarItemProps[];
-  indexToSpace?: number;
 };
 
 const Wrapper = styled.div`
@@ -22,18 +21,11 @@ const Content = styled.div`
   gap: var(--size-10);
 `;
 
-const Space = styled.div`
-  flex: 1;
-`;
-
-const SideBar = ({ listItem, indexToSpace = 8 }: Props) => {
+const SideBar = ({ listItem }: Props) => {
   const renderItem = () => {
-    return listItem.map((item, index) => (
-      <>
-        {index === indexToSpace && <Space />}
-        <SideBarItem {...item} />
-      </>
-    ));
+    return listItem.map((item, index) => {
+      return <SideBarItem {...item} key={index} />;
+    });
   };
   return (
     <Wrapper>
