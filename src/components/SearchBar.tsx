@@ -7,9 +7,11 @@ type Props = InputHTMLAttributes<HTMLInputElement>;
 const Label = styled.label`
   display: flex;
   gap: var(--size-12);
-  padding: var(--size-12) var(--size-14);
+  align-items: center;
+  padding: var(--size-12);
   border-radius: var(--size-8);
   background-color: var(--color-white6);
+  caret-color: var(--color-orange);
   cursor: text;
 `;
 
