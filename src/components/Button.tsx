@@ -20,7 +20,7 @@ const Wrapper = styled.button<ButtonProps>`
     props.variant === "secondary"
       ? "transparent"
       : props.style?.backgroundColor || "var(--color-purple)"};
-  padding: var(--size-18) var(--size-24);
+  padding: var(--size-16) var(--size-24);
   border-radius: var(--size-8);
   border: 1px solid
     ${(props) =>

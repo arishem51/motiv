@@ -6,6 +6,7 @@ import Divider from "../../components/Divider";
 import FormInput from "../../components/FormInput";
 import OnboardingText from "../../components/OnboardingText";
 import { SignInForm, useSignIn } from "../../services/react-query";
+import { RouteNames } from "../../services/react-router";
 import {
   OnboardingButton,
   FacebookButton,
@@ -37,7 +38,7 @@ const FormWrapper = styled.div`
   padding-right: var(--size-40);
   background-color: var(--color-white);
   box-shadow: 0px 10px 110px 1px rgba(59, 59, 59, 0.08);
-  border: 1px solid #f4f5f6;
+  border: 1px solid var(--color-white5);
   gap: var(--size-20);
   display: flex;
   flex-direction: column;
@@ -67,7 +68,7 @@ const SignIn = () => {
       { auth, ...data },
       {
         onSuccess: () => {
-          navigate("/");
+          navigate(RouteNames.DASHBOARD);
         },
       }
     );
@@ -97,6 +98,7 @@ const SignIn = () => {
           loading={isLoading}
           title="Sign In"
           onClick={handleClick}
+          disabled={isLoading}
         />
       </Content>
     </Wrapper>
