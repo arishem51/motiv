@@ -7,7 +7,7 @@ import FormInput from "../../components/FormInput";
 import OnboardingText from "../../components/OnboardingText";
 import { SignInForm, useSignIn } from "../../services/react-query";
 import { RouteNames } from "../../services/react-router";
-import { SIGN_IN_SUCCESS } from "../../types";
+import { EMAIL_ERROR, REQUIRED_ERROR, SIGN_IN_SUCCESS } from "../../types";
 import { resolveSignInError } from "../../utils/resolveSignInError";
 import {
   OnboardingButton,
@@ -41,7 +41,7 @@ const FormWrapper = styled.div`
   background-color: var(--color-white);
   box-shadow: 0px 10px 110px 1px rgba(59, 59, 59, 0.08);
   border: 1px solid var(--color-white5);
-  gap: var(--size-20);
+  gap: var(--size-12);
   display: flex;
   flex-direction: column;
   border-radius: var(--size-10);
@@ -50,7 +50,7 @@ const FormWrapper = styled.div`
 const Form = styled.div`
   display: flex;
   flex-direction: column;
-  gap: var(--size-12);
+  gap: var(--size-8);
 `;
 
 const Text = styled.p`
@@ -58,8 +58,18 @@ const Text = styled.p`
   font-weight: 500;
 `;
 
+const ErrorText = styled.p`
+  color: var(--color-red);
+  font-weight: 500;
+  height: 16px;
+`;
+
 const SignIn = () => {
-  const { register, handleSubmit } = useForm<SignInForm>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignInForm>();
 
   const navigate = useNavigate();
   const { mutate: signIn, isLoading } = useSignIn();
@@ -92,16 +102,32 @@ const SignIn = () => {
             <FormInput
               type="email"
               placeholder="hungpv@gmail.com"
-              {...register("email")}
+              {...register("email", {
+                required: {
+                  value: true,
+                  message: REQUIRED_ERROR,
+                },
+                pattern: {
+                  value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
+                  message: EMAIL_ERROR,
+                },
+              })}
             />
+            <ErrorText>{errors.email?.message}</ErrorText>
           </Form>
           <Form>
             <Text>Password</Text>
             <FormInput
               placeholder="********"
               type="password"
-              {...register("password")}
+              {...register("password", {
+                required: {
+                  value: true,
+                  message: REQUIRED_ERROR,
+                },
+              })}
             />
+            <ErrorText>{errors.password?.message}</ErrorText>
           </Form>
         </FormWrapper>
         <FormOptions />

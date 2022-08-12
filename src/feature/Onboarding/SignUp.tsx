@@ -1,4 +1,5 @@
 import { addDoc, collection } from "firebase/firestore";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -9,7 +10,12 @@ import FormInput from "../../components/FormInput";
 import OnboardingText from "../../components/OnboardingText";
 import { SignUpForm, useSignUp } from "../../services/react-query";
 import { RouteNames } from "../../services/react-router";
-import { CREATE_USER_ERROR, CREATE_USER_SUCCESS } from "../../types";
+import {
+  CREATE_USER_ERROR,
+  CREATE_USER_SUCCESS,
+  EMAIL_ERROR,
+  REQUIRED_ERROR,
+} from "../../types";
 import {
   FacebookButton,
   FormOptions,
@@ -42,7 +48,7 @@ const FormWrapper = styled.div`
   background-color: var(--color-white);
   box-shadow: 0px 10px 110px 1px rgba(59, 59, 59, 0.08);
   border: 1px solid var(--color-white5);
-  gap: var(--size-20);
+  gap: var(--size-12);
   display: flex;
   flex-direction: column;
   border-radius: var(--size-10);
@@ -51,7 +57,7 @@ const FormWrapper = styled.div`
 const Form = styled.div`
   display: flex;
   flex-direction: column;
-  gap: var(--size-12);
+  gap: var(--size-8);
 `;
 
 const Text = styled.p`
@@ -59,8 +65,19 @@ const Text = styled.p`
   font-weight: 500;
 `;
 
+const ErrorText = styled.p`
+  color: var(--color-red);
+  font-weight: 500;
+  height: 16px;
+`;
+
 const SignUp = () => {
-  const { register, handleSubmit } = useForm<SignUpForm>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignUpForm>();
+
   const { mutate: signUp, isLoading } = useSignUp();
   const navigate = useNavigate();
 
@@ -98,32 +115,60 @@ const SignUp = () => {
             <FormInput
               type="text"
               placeholder="Phung"
-              {...register("firstName")}
+              {...register("firstName", {
+                required: {
+                  value: true,
+                  message: REQUIRED_ERROR,
+                },
+              })}
             />
+            <ErrorText>{errors?.firstName?.message}</ErrorText>
           </Form>
           <Form>
             <Text>Last Name</Text>
             <FormInput
               type="text"
               placeholder="Hung"
-              {...register("lastName")}
+              {...register("lastName", {
+                required: {
+                  value: true,
+                  message: REQUIRED_ERROR,
+                },
+              })}
             />
+            <ErrorText>{errors?.lastName?.message}</ErrorText>
           </Form>
           <Form>
             <Text>Email</Text>
             <FormInput
               type="email"
               placeholder="hungpv@gmail.com"
-              {...register("email")}
+              {...register("email", {
+                required: {
+                  value: true,
+                  message: REQUIRED_ERROR,
+                },
+                pattern: {
+                  value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
+                  message: EMAIL_ERROR,
+                },
+              })}
             />
+            <ErrorText>{errors?.email?.message}</ErrorText>
           </Form>
           <Form>
             <Text>Password</Text>
             <FormInput
               placeholder="********"
-              {...register("password")}
+              {...register("password", {
+                required: {
+                  value: true,
+                  message: REQUIRED_ERROR,
+                },
+              })}
               type="password"
             />
+            <ErrorText>{errors?.password?.message}</ErrorText>
           </Form>
         </FormWrapper>
         <FormOptions />

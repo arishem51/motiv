@@ -4,3 +4,5 @@ export const CREATE_USER_SUCCESS = "Tạo tài khoản thành công";
 export const CREATE_USER_ERROR = "Tạo tài khoản không thành công";
 export const INVALID_PASSWORD = "Sai mật khẩu, vui lòng thử lại";
 export const USER_NOT_FOUND = "Không tìm thấy tài khoản, vui lòng thử lại";
+export const REQUIRED_ERROR = "Không được để trống";
+export const EMAIL_ERROR = "Không đúng định dạng email";
