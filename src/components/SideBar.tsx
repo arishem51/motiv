@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import styled from "styled-components";
 import { Icons } from "../assets";
 import SideBarItem, { SideBarItemProps } from "./SideBarItem";
@@ -21,10 +22,19 @@ const Content = styled.div`
   gap: var(--size-10);
 `;
 
+const Space = styled.div`
+  flex: 1;
+`;
+
 const SideBar = ({ listItem }: Props) => {
   const renderItem = () => {
     return listItem.map((item, index) => {
-      return <SideBarItem {...item} key={index} />;
+      return (
+        <Fragment key={item.title}>
+          {index === 8 && <Space />}
+          <SideBarItem {...item} />
+        </Fragment>
+      );
     });
   };
   return (
