@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Icons } from "../assets";
-import Avatar from "./Avatar";
 import SearchBar from "./SearchBar";
+import TopBarAvatar from "./TopBarAvatar";
 
 const Wrapper = styled.div`
   padding: var(--size-16) var(--size-32);
@@ -26,7 +26,7 @@ const TopBar = () => {
       <SearchBar />
       <WrapperRightContent>
         <Notification />
-        <Avatar />
+        <TopBarAvatar />
       </WrapperRightContent>
     </Wrapper>
   );

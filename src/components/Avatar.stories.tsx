@@ -1,5 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import Avatar, { genConfig } from "react-nice-avatar";
+import { genConfig } from "react-nice-avatar";
+import Avatar from "./Avatar";
 
 export default {
   component: Avatar,
@@ -7,11 +8,10 @@ export default {
 } as ComponentMeta<typeof Avatar>;
 
 export const Default: ComponentStory<typeof Avatar> = (args) => (
-  <Avatar {...args} style={{ width: "40px", height: "48px" }} />
+  <Avatar {...args} />
 );
 
-const config = genConfig();
-
 Default.args = {
-  ...config,
+  imageConfig: genConfig(),
+  isLoading: false,
 };
