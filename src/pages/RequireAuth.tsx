@@ -22,7 +22,7 @@ const RequireAuth = () => {
     return <Loading />;
   }
 
-  if (!isLoading && !user) {
+  if (!user) {
     return <Navigate to={RouteNames.SIGN_IN} />;
   }
 

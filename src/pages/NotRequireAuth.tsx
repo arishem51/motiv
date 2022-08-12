@@ -10,7 +10,7 @@ const NotRequireAuth = () => {
     return <Loading />;
   }
 
-  if (!isLoading && user) {
+  if (user) {
     return <Navigate to={RouteNames.DASHBOARD} />;
   }
 
