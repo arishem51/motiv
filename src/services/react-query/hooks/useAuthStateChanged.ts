@@ -1,4 +1,4 @@
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import { useEffect, useState } from "react";
 
 type Props = {
@@ -8,18 +8,24 @@ type Props = {
 
 export const useAuthStateChanged = ({ onAuthSuccess, onAuthError }: Props) => {
   const [isLoading, setIsLoading] = useState(true);
+  const [user, setUser] = useState<User | null>(null);
   const auth = getAuth();
-
   useEffect(() => {
     setIsLoading(true);
-    onAuthStateChanged(auth, (user) => {
-      if (!user) {
+    const remove = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        onAuthSuccess && onAuthSuccess();
+        setUser(user);
+      } else {
         onAuthError && onAuthError();
+        setUser(null);
       }
-      onAuthSuccess && onAuthSuccess();
       setIsLoading(false);
     });
+    return () => {
+      remove();
+    };
   }, [auth, onAuthError, onAuthSuccess]);
 
-  return { isLoading };
+  return { isLoading, user };
 };
