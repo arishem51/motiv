@@ -89,11 +89,19 @@ const SignIn = () => {
         <FormWrapper>
           <Form>
             <Text>Email</Text>
-            <FormInput placeholder="hungpv@gmail.com" {...register("email")} />
+            <FormInput
+              type="email"
+              placeholder="hungpv@gmail.com"
+              {...register("email")}
+            />
           </Form>
           <Form>
             <Text>Password</Text>
-            <FormInput placeholder="********" {...register("password")} />
+            <FormInput
+              placeholder="********"
+              type="password"
+              {...register("password")}
+            />
           </Form>
         </FormWrapper>
         <FormOptions />

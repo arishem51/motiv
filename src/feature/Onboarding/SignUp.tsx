@@ -95,19 +95,35 @@ const SignUp = () => {
         <FormWrapper>
           <Form>
             <Text>First Name</Text>
-            <FormInput placeholder="Phung" {...register("firstName")} />
+            <FormInput
+              type="text"
+              placeholder="Phung"
+              {...register("firstName")}
+            />
           </Form>
           <Form>
             <Text>Last Name</Text>
-            <FormInput placeholder="Hung" {...register("lastName")} />
+            <FormInput
+              type="text"
+              placeholder="Hung"
+              {...register("lastName")}
+            />
           </Form>
           <Form>
             <Text>Email</Text>
-            <FormInput placeholder="hungpv@gmail.com" {...register("email")} />
+            <FormInput
+              type="email"
+              placeholder="hungpv@gmail.com"
+              {...register("email")}
+            />
           </Form>
           <Form>
             <Text>Password</Text>
-            <FormInput placeholder="********" {...register("password")} />
+            <FormInput
+              placeholder="********"
+              {...register("password")}
+              type="password"
+            />
           </Form>
         </FormWrapper>
         <FormOptions />
