@@ -1,8 +1,11 @@
+import { getAuth } from "firebase/auth";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Divider from "../../components/Divider";
 import FormInput from "../../components/FormInput";
 import OnboardingText from "../../components/OnboardingText";
+import { SignInForm, useSignIn } from "../../services/react-query";
 import {
   OnboardingButton,
   FacebookButton,
@@ -53,14 +56,21 @@ const Text = styled.p`
 `;
 
 const SignIn = () => {
-  const { register, handleSubmit } =
-    useForm<{
-      email: string;
-      password: string;
-    }>();
+  const { register, handleSubmit } = useForm<SignInForm>();
+
+  const navigate = useNavigate();
+  const { mutate: signIn, isLoading } = useSignIn();
 
   const handleClick = handleSubmit((data) => {
-    console.log({ data });
+    const auth = getAuth();
+    signIn(
+      { auth, ...data },
+      {
+        onSuccess: () => {
+          navigate("/");
+        },
+      }
+    );
   });
 
   return (
@@ -83,7 +93,11 @@ const SignIn = () => {
           </Form>
         </FormWrapper>
         <FormOptions />
-        <OnboardingButton title="Sign In" onClick={handleClick} />
+        <OnboardingButton
+          loading={isLoading}
+          title="Sign In"
+          onClick={handleClick}
+        />
       </Content>
     </Wrapper>
   );
