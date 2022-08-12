@@ -5,8 +5,9 @@ import SideBar from "../components/SideBar";
 import { SideBarItemProps } from "../components/SideBarItem";
 import TopBar from "../components/TopBar";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Loading from "../components/Loading";
+import { useAuthStateChanged } from "../services/react-query/hooks/useAuthStateChanged";
 
 const Wrapper = styled.div`
   display: flex;
@@ -71,21 +72,16 @@ const DATA: SideBarItemProps[] = [
 ];
 
 const RequireAuth = () => {
-  // const [isLoading, setIsLoading] = useState(true);
-  // const navigate = useNavigate();
-  // const auth = getAuth();
-  // onAuthStateChanged(auth, (user) => {
-  //   if (!user) {
-  //     navigate("/SignIn");
-  //   }
-  //   setIsLoading(false);
-  // });
+  const navigate = useNavigate();
+  const { isLoading } = useAuthStateChanged({
+    onAuthError() {
+      navigate("/SignIn");
+    },
+  });
 
-  // if (isLoading) {
-  //   return <Loading />;
-  // }
-
-  // console.log("re-render");
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <Wrapper>
