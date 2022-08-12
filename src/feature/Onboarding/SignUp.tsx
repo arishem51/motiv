@@ -1,21 +1,10 @@
-import { addDoc, collection } from "firebase/firestore";
-import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import styled from "styled-components";
-import { firebaseDB } from "../..";
 import Divider from "../../components/Divider";
 import FormInput from "../../components/FormInput";
 import OnboardingText from "../../components/OnboardingText";
 import { SignUpForm, useSignUp } from "../../services/react-query";
-import { RouteNames } from "../../services/react-router";
-import {
-  CREATE_USER_ERROR,
-  CREATE_USER_SUCCESS,
-  EMAIL_ERROR,
-  REQUIRED_ERROR,
-} from "../../types";
+import { EMAIL_ERROR, REQUIRED_ERROR } from "../../types";
 import {
   FacebookButton,
   FormOptions,
@@ -79,25 +68,9 @@ const SignUp = () => {
   } = useForm<SignUpForm>();
 
   const { mutate: signUp, isLoading } = useSignUp();
-  const navigate = useNavigate();
 
   const handleClick = handleSubmit((data) => {
-    signUp(data, {
-      onSuccess(_, variables) {
-        const { email, firstName, lastName, password } = variables;
-        addDoc(collection(firebaseDB, "users"), {
-          firstName,
-          lastName,
-          email,
-          password,
-        });
-        toast.success(CREATE_USER_SUCCESS);
-        navigate(RouteNames.DASHBOARD);
-      },
-      onError() {
-        toast.error(CREATE_USER_ERROR);
-      },
-    });
+    signUp(data);
   });
 
   return (

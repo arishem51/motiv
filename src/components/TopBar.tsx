@@ -3,6 +3,8 @@ import { Icons } from "../assets";
 import Avatar from "./Avatar";
 import SearchBar from "./SearchBar";
 import imageSrc from "../assets/exampleAvatar.jpg";
+import { useAuth } from "../context/AuthProvider";
+import { generateImage } from "../utils/generateImageURL";
 
 const Wrapper = styled.div`
   padding: var(--size-16) var(--size-32);
@@ -22,12 +24,16 @@ const Notification = styled(Icons.Notification)`
 `;
 
 const TopBar = () => {
+  const { user } = useAuth();
+
+  console.log(user?.photoURL);
+
   return (
     <Wrapper>
       <SearchBar />
       <WrapperRightContent>
         <Notification />
-        <Avatar src={imageSrc} />
+        <Avatar src={user?.photoURL || generateImage(user?.email)} />
       </WrapperRightContent>
     </Wrapper>
   );
