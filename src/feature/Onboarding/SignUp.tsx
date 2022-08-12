@@ -65,12 +65,13 @@ const SignUp = () => {
 
   const handleClick = handleSubmit((data) => {
     signUp(data, {
-      async onSuccess(_, variables) {
-        const { email, firstName, lastName } = variables;
-        await addDoc(collection(firebaseDB, "users"), {
+      onSuccess(_, variables) {
+        const { email, firstName, lastName, password } = variables;
+        addDoc(collection(firebaseDB, "users"), {
           firstName,
           lastName,
           email,
+          password,
         });
         toast.success("Tạo tài khoản thành công");
         navigate(RouteNames.DASHBOARD);
