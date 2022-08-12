@@ -1,5 +1,6 @@
 import { Link as LinkRRD } from "react-router-dom";
 import styled from "styled-components";
+import { RouteNames } from "../services/react-router";
 
 const Wrapper = styled.div`
   display: flex;
@@ -37,14 +38,15 @@ type Props = {
 };
 
 const OnboardingText = ({ isSignIn }: Props) => {
-  const linkTo = isSignIn ? "SignUp" : "SignIn";
-
   return (
     <Wrapper>
       <H1>Get's Started.</H1>
       <WrapperSubTxt>
         <H3>{isSignIn ? "Don't have an account?" : "Have an account?"}</H3>
-        <Link to={linkTo}>
+        <Link
+          to={isSignIn ? `/${RouteNames.SIGN_UP}` : `/${RouteNames.SIGN_IN}`}
+          replace={true}
+        >
           <PurpleH3>{isSignIn ? "Sign Up" : "Sign In"}</PurpleH3>
         </Link>
       </WrapperSubTxt>
