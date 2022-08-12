@@ -6,7 +6,8 @@ import {
   updateProfile,
   UserCredential,
 } from "firebase/auth";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, doc, setDoc } from "firebase/firestore";
+import { genConfig } from "react-nice-avatar";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { firebaseDB } from "../../..";
@@ -33,11 +34,13 @@ export const useSignUp = () => {
         toast.success(CREATE_USER_SUCCESS);
         navigate(RouteNames.DASHBOARD);
         const { email, firstName, lastName, password } = variables;
-        addDoc(collection(firebaseDB, "users"), {
+        const imageConfig = genConfig();
+        setDoc(doc(firebaseDB, "users", email), {
           firstName,
           lastName,
           email,
           password,
+          imageConfig,
         });
         updateProfile(user, {
           photoURL: generateImage(email),

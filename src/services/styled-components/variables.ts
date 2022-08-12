@@ -22,7 +22,7 @@ export const COLORS = {
 } as const;
 
 export const SIZE = [
-  4, 8, 10, 12, 14, 16, 18, 20, 24, 30, 32, 40, 54, 64,
+  4, 6, 8, 10, 12, 14, 16, 18, 20, 24, 30, 32, 40, 54, 64,
 ] as const;
 
 export const createSizeVariables = () => {
