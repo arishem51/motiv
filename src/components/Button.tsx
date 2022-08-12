@@ -4,6 +4,7 @@ import {
   isValidElement,
   ReactNode,
 } from "react";
+import { SyncLoader } from "react-spinners";
 import styled from "styled-components";
 
 export type ButtonProps = {
@@ -11,6 +12,7 @@ export type ButtonProps = {
   variant?: "primary" | "secondary";
   icon?: ReactNode;
   textStyle?: CSSProperties;
+  loading?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const Wrapper = styled.button<ButtonProps>`
@@ -27,6 +29,7 @@ const Wrapper = styled.button<ButtonProps>`
         : props.style?.backgroundColor || "transparent"};
   cursor: pointer;
   min-width: 246px;
+  min-height: 60px;
 `;
 
 const Text = styled.h1<{ variant?: "secondary" | "primary" }>`
@@ -43,14 +46,33 @@ const Content = styled.div`
   justify-content: center;
 `;
 
-const Button = ({ title, icon, textStyle, ...props }: ButtonProps) => {
+const Button = ({
+  title,
+  icon,
+  textStyle,
+  loading = false,
+  ...props
+}: ButtonProps) => {
   return (
     <Wrapper {...props}>
       <Content>
-        {icon && isValidElement(icon) && icon}
-        <Text style={textStyle} variant={props.variant}>
-          {title}
-        </Text>
+        {loading ? (
+          <SyncLoader
+            size={12}
+            color={
+              props.variant === "secondary"
+                ? "var(--color-orange)"
+                : "var(--color-white)"
+            }
+          />
+        ) : (
+          <>
+            {icon && isValidElement(icon) && icon}
+            <Text style={textStyle} variant={props.variant}>
+              {title}
+            </Text>
+          </>
+        )}
       </Content>
     </Wrapper>
   );

@@ -16,6 +16,7 @@ Default.args = {
   textStyle: {
     fontWeight: 700,
   },
+  loading: true,
 };
 
 export const GoogleButton = Story.bind({});
@@ -24,6 +25,7 @@ GoogleButton.args = {
   title: "Sign in with Google",
   variant: "secondary",
   icon: <Icons.Google />,
+  loading: false,
 };
 
 export const FacebookButton = Story.bind({});
