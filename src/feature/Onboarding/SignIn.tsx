@@ -64,19 +64,15 @@ const SignIn = () => {
   const { mutate: signIn, isLoading } = useSignIn();
 
   const handleClick = handleSubmit((data) => {
-    const auth = getAuth();
-    signIn(
-      { auth, ...data },
-      {
-        onSuccess: () => {
-          toast.success("Đăng nhập thành công");
-          navigate(RouteNames.DASHBOARD);
-        },
-        onError: () => {
-          toast.error("Đăng nhập không thành công");
-        },
-      }
-    );
+    signIn(data, {
+      onSuccess: () => {
+        toast.success("Đăng nhập thành công");
+        navigate(RouteNames.DASHBOARD);
+      },
+      onError: () => {
+        toast.error("Đăng nhập không thành công");
+      },
+    });
   });
 
   return (

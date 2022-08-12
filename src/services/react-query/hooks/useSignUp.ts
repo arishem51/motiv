@@ -1,21 +1,23 @@
 import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import {
+  createUserWithEmailAndPassword,
   getAuth,
-  signInWithEmailAndPassword,
   UserCredential,
 } from "firebase/auth";
 
-export type SignInForm = {
+export type SignUpForm = {
   email: string;
   password: string;
+  firstName: string;
+  lastName: string;
 };
 
-export const useSignIn = () => {
-  return useMutation<UserCredential, AxiosError, SignInForm>(
+export const useSignUp = () => {
+  return useMutation<UserCredential, AxiosError, SignUpForm>(
     ({ email, password }) => {
       const auth = getAuth();
-      return signInWithEmailAndPassword(auth, email, password);
+      return createUserWithEmailAndPassword(auth, email, password);
     }
   );
 };

@@ -16,6 +16,7 @@ const Input = styled.input`
   border: none;
   outline: none;
   color: var(--color-dark5);
+  flex: 1;
 `;
 
 const Label = styled.label`
@@ -25,9 +26,9 @@ const Label = styled.label`
 const FormInput = forwardRef<HTMLInputElement, Props>(
   ({ containerStyle, ...props }, ref) => {
     return (
-      <Label htmlFor="input">
+      <Label>
         <Wrapper style={containerStyle}>
-          <Input id="input" {...props} ref={ref} />
+          <Input {...props} ref={ref} />
         </Wrapper>
       </Label>
     );

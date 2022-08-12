@@ -4,17 +4,20 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { InitializeFirebase } from "./services/firebase";
 import { queryClient } from "./services/react-query";
 import { GlobalStyle } from "./services/styled-components";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import { initializeApp } from "firebase/app";
+import { firebaseConfig } from "./services/firebase";
+import { getFirestore } from "firebase/firestore";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
-InitializeFirebase();
+const app = initializeApp(firebaseConfig);
+export const firebaseDB = getFirestore(app);
 
 root.render(
   <BrowserRouter>
