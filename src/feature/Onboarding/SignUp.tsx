@@ -1,3 +1,4 @@
+import { AuthErrorCodes } from "firebase/auth";
 import { addDoc, collection } from "firebase/firestore";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -75,6 +76,9 @@ const SignUp = () => {
         });
         toast.success("Tạo tài khoản thành công");
         navigate(RouteNames.DASHBOARD);
+      },
+      onError() {
+        toast.error("Tạo tài khoản không thành công");
       },
     });
   });

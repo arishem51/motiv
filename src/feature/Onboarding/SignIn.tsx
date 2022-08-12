@@ -1,4 +1,3 @@
-import { getAuth } from "firebase/auth";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -8,6 +7,7 @@ import FormInput from "../../components/FormInput";
 import OnboardingText from "../../components/OnboardingText";
 import { SignInForm, useSignIn } from "../../services/react-query";
 import { RouteNames } from "../../services/react-router";
+import { resolveSignInError } from "../../utils/resolveSignInError";
 import {
   OnboardingButton,
   FacebookButton,
@@ -69,8 +69,9 @@ const SignIn = () => {
         toast.success("Đăng nhập thành công");
         navigate(RouteNames.DASHBOARD);
       },
-      onError: () => {
-        toast.error("Đăng nhập không thành công");
+      onError: (error) => {
+        const messages = resolveSignInError(error.code);
+        toast.error(messages);
       },
     });
   });
