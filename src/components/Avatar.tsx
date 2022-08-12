@@ -1,11 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
-import { getAuth } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
 import RAvatar, { AvatarFullConfig } from "react-nice-avatar";
 import { SyncLoader } from "react-spinners";
 import styled from "styled-components";
-import { firebaseDB } from "..";
-import { useAuth } from "../context/AuthProvider";
 
 const SIZE = 48;
 
