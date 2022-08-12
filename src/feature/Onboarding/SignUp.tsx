@@ -1,4 +1,3 @@
-import { AuthErrorCodes } from "firebase/auth";
 import { addDoc, collection } from "firebase/firestore";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +9,7 @@ import FormInput from "../../components/FormInput";
 import OnboardingText from "../../components/OnboardingText";
 import { SignUpForm, useSignUp } from "../../services/react-query";
 import { RouteNames } from "../../services/react-router";
+import { CREATE_USER_ERROR, CREATE_USER_SUCCESS } from "../../types";
 import {
   FacebookButton,
   FormOptions,
@@ -74,11 +74,11 @@ const SignUp = () => {
           email,
           password,
         });
-        toast.success("Tạo tài khoản thành công");
+        toast.success(CREATE_USER_SUCCESS);
         navigate(RouteNames.DASHBOARD);
       },
       onError() {
-        toast.error("Tạo tài khoản không thành công");
+        toast.error(CREATE_USER_ERROR);
       },
     });
   });

@@ -7,6 +7,7 @@ import FormInput from "../../components/FormInput";
 import OnboardingText from "../../components/OnboardingText";
 import { SignInForm, useSignIn } from "../../services/react-query";
 import { RouteNames } from "../../services/react-router";
+import { SIGN_IN_SUCCESS } from "../../types";
 import { resolveSignInError } from "../../utils/resolveSignInError";
 import {
   OnboardingButton,
@@ -66,7 +67,7 @@ const SignIn = () => {
   const handleClick = handleSubmit((data) => {
     signIn(data, {
       onSuccess: () => {
-        toast.success("Đăng nhập thành công");
+        toast.success(SIGN_IN_SUCCESS);
         navigate(RouteNames.DASHBOARD);
       },
       onError: (error) => {
