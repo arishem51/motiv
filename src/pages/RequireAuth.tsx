@@ -71,19 +71,21 @@ const DATA: SideBarItemProps[] = [
 ];
 
 const RequireAuth = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate();
-  const auth = getAuth();
-  onAuthStateChanged(auth, (user) => {
-    if (!user) {
-      navigate("/SignIn");
-    }
-    setIsLoading(false);
-  });
+  // const [isLoading, setIsLoading] = useState(true);
+  // const navigate = useNavigate();
+  // const auth = getAuth();
+  // onAuthStateChanged(auth, (user) => {
+  //   if (!user) {
+  //     navigate("/SignIn");
+  //   }
+  //   setIsLoading(false);
+  // });
 
-  if (isLoading) {
-    return <Loading />;
-  }
+  // if (isLoading) {
+  //   return <Loading />;
+  // }
+
+  // console.log("re-render");
 
   return (
     <Wrapper>
