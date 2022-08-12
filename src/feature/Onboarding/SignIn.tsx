@@ -1,6 +1,7 @@
 import { getAuth } from "firebase/auth";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import styled from "styled-components";
 import Divider from "../../components/Divider";
 import FormInput from "../../components/FormInput";
@@ -68,7 +69,11 @@ const SignIn = () => {
       { auth, ...data },
       {
         onSuccess: () => {
+          toast.success("Đăng nhập thành công");
           navigate(RouteNames.DASHBOARD);
+        },
+        onError: () => {
+          toast.error("Đăng nhập không thành công");
         },
       }
     );

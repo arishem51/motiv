@@ -7,6 +7,8 @@ import reportWebVitals from "./reportWebVitals";
 import { InitializeFirebase } from "./services/firebase";
 import { queryClient } from "./services/react-query";
 import { GlobalStyle } from "./services/styled-components";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -19,6 +21,16 @@ root.render(
     <QueryClientProvider client={queryClient}>
       <GlobalStyle />
       <App />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        pauseOnHover={false}
+      />
     </QueryClientProvider>
   </BrowserRouter>
 );
