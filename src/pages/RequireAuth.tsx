@@ -5,7 +5,6 @@ import TopBar from "../components/TopBar";
 import Loading from "../components/Loading";
 import { RouteNames, ROUTES } from "../services/react-router";
 import { useAuth } from "../context/AuthProvider";
-import { firebaseDB } from "..";
 
 const Wrapper = styled.div`
   display: flex;

@@ -10,7 +10,7 @@ const TopBarAvatar = () => {
     ["user-avatar"],
     async () => {
       //cast type email
-      const email = user?.email as string;
+      const email = "hungphung2002@gmail.com";
       const docRef = await doc(firebaseDB, "users", email);
       return (await getDoc(docRef)).data();
     },
@@ -19,7 +19,7 @@ const TopBarAvatar = () => {
     }
   );
 
-  return <Avatar isLoading={isLoading} imageConfig={data?.imageConfig} />;
+  return <Avatar isLoading={isLoading} imageConfig={data.imageConfig} />;
 };
 
 export default TopBarAvatar;
