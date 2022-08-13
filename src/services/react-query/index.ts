@@ -1,3 +1,2 @@
 export * from "./react-query";
-export * from "./hooks/useSignIn";
-export * from "./hooks/useSignUp";
+export * from "./hooks/auth";

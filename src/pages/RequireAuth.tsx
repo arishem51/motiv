@@ -31,7 +31,7 @@ const RequireAuth = () => {
     <Wrapper>
       <SideBar listItem={ROUTES} />
       <Content>
-        <TopBar firebase={firebaseDB} />
+        <TopBar />
         <Outlet />
       </Content>
     </Wrapper>

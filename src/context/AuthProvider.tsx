@@ -1,6 +1,6 @@
 import { User } from "firebase/auth";
 import { createContext, PropsWithChildren, useContext } from "react";
-import { useAuthStateChanged } from "../services/react-query/hooks/useAuthStateChanged";
+import { useAuthStateChanged } from "../services/react-query";
 
 type Props = {} & PropsWithChildren;
 
