@@ -19,7 +19,7 @@ const TopBarAvatar = () => {
     }
   );
 
-  return <Avatar isLoading={isLoading} imageConfig={data.imageConfig} />;
+  return <Avatar isLoading={isLoading} imageConfig={data?.imageConfig} />;
 };
 
 export default TopBarAvatar;
