@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { scaleLinear } from "d3-scale";
+import { memo } from "react";
 
 type Props = {
   strokeColor?: string;
@@ -72,4 +73,4 @@ const PieChart = ({
   );
 };
 
-export default PieChart;
+export default memo(PieChart);

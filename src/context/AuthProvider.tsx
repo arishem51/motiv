@@ -1,5 +1,5 @@
 import { User } from "firebase/auth";
-import { createContext, PropsWithChildren, useContext } from "react";
+import { createContext, PropsWithChildren, useContext, useMemo } from "react";
 import { useAuthStateChanged } from "../services/react-query";
 
 type Props = {} & PropsWithChildren;
@@ -11,9 +11,13 @@ const Context = createContext<{ user: User | null; isLoading: boolean }>({
 
 const AuthProvider = ({ children }: Props) => {
   const { isLoading, user } = useAuthStateChanged({});
-  return (
-    <Context.Provider value={{ user, isLoading }}>{children}</Context.Provider>
-  );
+  const memoValue = useMemo(() => {
+    return {
+      isLoading,
+      user,
+    };
+  }, [isLoading, user]);
+  return <Context.Provider value={memoValue}>{children}</Context.Provider>;
 };
 
 export const useAuth = () => {
