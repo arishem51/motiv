@@ -42,7 +42,7 @@ const PieChart = ({
     .range([circumference, circumference / 4])
     .clamp(true);
 
-  const value = calculator(currentValue);
+  const value = totalValue === 0 ? circumference : calculator(currentValue);
 
   return (
     <Svg width={SIZE} height={SIZE} viewBox={`0 0 ${SIZE} ${SIZE}`}>
