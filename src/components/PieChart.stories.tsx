@@ -6,4 +6,11 @@ export default {
   title: "Pie Chart",
 } as ComponentMeta<typeof PieChart>;
 
-export const Default: ComponentStory<typeof PieChart> = () => <PieChart />;
+const Story: ComponentStory<typeof PieChart> = (args) => <PieChart {...args} />;
+
+export const Default = Story.bind({});
+
+Default.args = {
+  totalValue: 100,
+  currentValue: 10,
+};
