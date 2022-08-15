@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { firebaseDB } from "../../..";
 import { CREATE_USER_ERROR, CREATE_USER_SUCCESS } from "../../../types";
+import { Me } from "../../firebase/types";
 import { RouteNames } from "../../react-router";
 
 export type SignInForm = {
@@ -41,27 +42,30 @@ export type SignUpForm = {
 
 export const useSignUp = () => {
   const navigate = useNavigate();
-  return useMutation<UserCredential, AxiosError, SignUpForm>(
-    ({ email, password }) => {
+  return useMutation<void, AxiosError, SignUpForm>(
+    async ({ email, password, lastName, firstName }) => {
       const auth = getAuth();
-      return createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const imageConfig = genConfig();
+      await setDoc(doc(firebaseDB, "users", email), {
+        firstName,
+        lastName,
+        email,
+        password,
+        imageConfig,
+      });
+      await updateProfile(userCredential.user, {
+        displayName: lastName + " " + firstName,
+      });
     },
     {
-      onSuccess({ user }, variables) {
+      onSuccess() {
         toast.success(CREATE_USER_SUCCESS);
         navigate(RouteNames.DASHBOARD);
-        const { email, firstName, lastName, password } = variables;
-        const imageConfig = genConfig();
-        setDoc(doc(firebaseDB, "users", email), {
-          firstName,
-          lastName,
-          email,
-          password,
-          imageConfig,
-        });
-        updateProfile(user, {
-          displayName: lastName + " " + firstName,
-        });
       },
       onError() {
         toast.error(CREATE_USER_ERROR);
