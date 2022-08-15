@@ -1,25 +1,12 @@
-import { useQuery } from "@tanstack/react-query";
-import { doc, getDoc } from "firebase/firestore";
-import { firebaseDB } from "..";
 import { useAuth } from "../context/AuthProvider";
 import Avatar from "./Avatar";
 
 const TopBarAvatar = () => {
-  const { user } = useAuth();
-  const { data, isLoading } = useQuery<any>(
-    ["user-avatar"],
-    async () => {
-      //cast type email
-      const email = "hungphung2002@gmail.com";
-      const docRef = await doc(firebaseDB, "users", email);
-      return (await getDoc(docRef)).data();
-    },
-    {
-      enabled: !!user?.email,
-    }
-  );
+  const { user, isLoading } = useAuth();
 
-  return <Avatar isLoading={isLoading} imageConfig={data?.imageConfig} />;
+  return (
+    <Avatar isLoading={isLoading} imageConfig={user?.userDB.imageConfig} />
+  );
 };
 
 export default TopBarAvatar;

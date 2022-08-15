@@ -9,14 +9,14 @@ import {
   User,
   UserCredential,
 } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { genConfig } from "react-nice-avatar";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { firebaseDB } from "../../..";
 import { CREATE_USER_ERROR, CREATE_USER_SUCCESS } from "../../../types";
-import { Me } from "../../firebase/types";
+import { Me, UserDatabase } from "../../firebase/types";
 import { RouteNames } from "../../react-router";
 
 export type SignInForm = {
@@ -84,13 +84,22 @@ export const useAuthStateChanged = ({
   onAuthError,
 }: AuthStateChanged) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<Me | null>(null);
   const auth = getAuth();
   useEffect(() => {
     setIsLoading(true);
-    const remove = onAuthStateChanged(auth, (user) => {
-      if (user) {
+    const remove = onAuthStateChanged(auth, async (userFB) => {
+      if (userFB) {
+        if (!userFB) return;
         onAuthSuccess && onAuthSuccess();
+        const result = await getDoc(
+          await doc(firebaseDB, "users", userFB.email as string)
+        );
+        const userDB = (await result.data()) as UserDatabase;
+        const user: Me = {
+          userDB,
+          userFB,
+        };
         setUser(user);
       } else {
         onAuthError && onAuthError();

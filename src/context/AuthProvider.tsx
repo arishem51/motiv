@@ -1,10 +1,10 @@
-import { User } from "firebase/auth";
 import { createContext, PropsWithChildren, useContext, useMemo } from "react";
+import { Me } from "../services/firebase/types";
 import { useAuthStateChanged } from "../services/react-query";
 
 type Props = {} & PropsWithChildren;
 
-const Context = createContext<{ user: User | null; isLoading: boolean }>({
+const Context = createContext<{ user: Me | null; isLoading: boolean }>({
   user: null,
   isLoading: true,
 });

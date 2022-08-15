@@ -1,7 +1,7 @@
-import { UserCredential } from "firebase/auth";
+import { User } from "firebase/auth";
 import { AvatarFullConfig } from "react-nice-avatar";
 
-type UserDatabase = {
+export type UserDatabase = {
   email: string;
   firstName: string;
   imageConfig: AvatarFullConfig;
@@ -11,5 +11,5 @@ type UserDatabase = {
 
 export type Me = {
   userDB: UserDatabase;
-  userFB: UserCredential;
+  userFB: User;
 };
