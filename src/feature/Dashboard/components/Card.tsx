@@ -4,13 +4,16 @@ import PieChart from "../../../components/PieChart";
 
 type Variant = "primary" | "secondary";
 
+export type ChartValue = {
+  chartValue: number;
+};
+
 type Props = {
   variant?: Variant;
-  icon?: ReactNode;
-  title?: string;
-  chartColor?: string;
-  chartValue?: number;
-};
+  icon: ReactNode;
+  title: string;
+  chartColor: string;
+} & ChartValue;
 
 const Wrapper = styled.div<{ variant: Variant }>`
   display: flex;
@@ -49,6 +52,9 @@ const Card = ({
         value={chartValue}
         strokeColor={chartColor}
         strokeOpacity={variant === "primary" ? 0.3 : 1}
+        textColor={
+          variant === "primary" ? "var(--color-white)" : "var(--color-dark)"
+        }
       />
     </Wrapper>
   );

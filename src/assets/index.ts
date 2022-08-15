@@ -16,6 +16,9 @@ import { ReactComponent as SignOut } from "./signOut.svg";
 import { ReactComponent as Search } from "./search.svg";
 import { ReactComponent as Notification } from "./notification.svg";
 import { ReactComponent as Energy } from "./energy.svg";
+import { ReactComponent as Range } from "./range.svg";
+import { ReactComponent as BreakFluid } from "./breakFluid.svg";
+import { ReactComponent as TireWear } from "./tireWear.svg";
 
 export const Icons = {
   Message,
@@ -36,4 +39,7 @@ export const Icons = {
   Search,
   Notification,
   Energy,
+  Range,
+  BreakFluid,
+  TireWear,
 };

@@ -13,6 +13,8 @@ const Wrapper = styled.div`
 const Content = styled.div`
   flex: 1;
   background-color: var(--color-white7);
+  display: flex;
+  flex-direction: column;
 `;
 
 const RequireAuth = () => {

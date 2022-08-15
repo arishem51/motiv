@@ -3,7 +3,7 @@ import { scaleLinear } from "d3-scale";
 import { memo } from "react";
 
 type Props = {
-  strokeColor?: string;
+  strokeColor: string;
   strokeWidth?: number;
   radius?: number;
   strokeBackgroundColor?: string;
