@@ -45,7 +45,11 @@ const Card = ({
     <Wrapper variant={variant}>
       {icon}
       <Text variant={variant}>{title}</Text>
-      <PieChart value={chartValue} strokeColor={chartColor} />
+      <PieChart
+        value={chartValue}
+        strokeColor={chartColor}
+        strokeOpacity={variant === "primary" ? 0.3 : 1}
+      />
     </Wrapper>
   );
 };

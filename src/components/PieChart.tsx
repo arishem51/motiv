@@ -9,6 +9,7 @@ type Props = {
   strokeBackgroundColor?: string;
   value?: number;
   textColor?: string;
+  strokeOpacity?: number;
 };
 
 const COORDINATES = "50%";
@@ -36,6 +37,7 @@ const PieChart = ({
   strokeBackgroundColor = "var(--color-white8)",
   value = 0,
   textColor = "var(--color-white)",
+  strokeOpacity = 1,
 }: Props) => {
   const circumference = Math.floor(Math.PI * 2 * radius);
   const minimumOffset = circumference / 4;
@@ -59,7 +61,7 @@ const PieChart = ({
         strokeDasharray={circumference}
         strokeDashoffset={minimumOffset}
         strokeLinecap={ROUND}
-        strokeOpacity={0.3}
+        strokeOpacity={strokeOpacity}
       />
       <Circle
         cx={COORDINATES}
