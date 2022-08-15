@@ -8,6 +8,7 @@ type Props = {
   radius?: number;
   strokeBackgroundColor?: string;
   value?: number;
+  textColor?: string;
 };
 
 const COORDINATES = "50%";
@@ -21,9 +22,11 @@ const Circle = styled.circle`
   rotate: ${DEFAULT_ROTATE};
 `;
 
-const Svg = styled.svg`
-  width: ${SIZE};
-  height: ${SIZE};
+const Svg = styled.svg``;
+
+const Text = styled.text`
+  font-size: 24px;
+  font-weight: 700;
 `;
 
 const PieChart = ({
@@ -32,6 +35,7 @@ const PieChart = ({
   radius = 50,
   strokeBackgroundColor = "var(--color-white8)",
   value = 0,
+  textColor = "var(--color-white)",
 }: Props) => {
   const circumference = Math.floor(Math.PI * 2 * radius);
   const minimumOffset = circumference / 4;
@@ -55,6 +59,7 @@ const PieChart = ({
         strokeDasharray={circumference}
         strokeDashoffset={minimumOffset}
         strokeLinecap={ROUND}
+        strokeOpacity={0.3}
       />
       <Circle
         cx={COORDINATES}
@@ -67,6 +72,15 @@ const PieChart = ({
         strokeDashoffset={offset}
         strokeLinecap={ROUND}
       />
+      <Text
+        x="50%"
+        y="55%"
+        dominant-baseline="middle"
+        textAnchor="middle"
+        fill={textColor}
+      >
+        {value + "%"}
+      </Text>
     </Svg>
   );
 };

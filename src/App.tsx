@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import AuthProvider from "./context/AuthProvider";
+import Dashboard from "./feature/Dashboard/Dashboard";
 import SignIn from "./feature/Onboarding/SignIn";
 import SignUp from "./feature/Onboarding/SignUp";
 import NotRequireAuth from "./pages/NotRequireAuth";
@@ -11,7 +12,7 @@ function App() {
     <AuthProvider>
       <Routes>
         <Route path={RouteNames.DASHBOARD} element={<RequireAuth />}>
-          <Route index element={<div>Dashboard</div>} />
+          <Route index element={<Dashboard />} />
           <Route path={RouteNames.ASSETS} element={<div>Assets</div>} />
           <Route path={RouteNames.BOOKING} element={<div>Booking</div>} />
           <Route path={RouteNames.SELL} element={<div>Sell Cars</div>} />
