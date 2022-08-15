@@ -1,6 +1,7 @@
-import { Fragment, useState } from "react";
 import styled from "styled-components";
 import BarChartStatistics from "../../../components/BarChartStatistics";
+import MilesButton from "./MilesButton";
+import MilesText from "./MilesText";
 
 const data = [
   {
@@ -81,88 +82,30 @@ const Wrapper = styled.div`
   padding: var(--size-16) var(--size-32);
   background-color: var(--color-white);
   border-radius: var(--size-14);
-  gap: var(--size-10);
+  gap: var(--size-12);
   display: flex;
   flex-direction: column;
 `;
 
-const TextWrapper = styled.div`
+const Content = styled.div`
   display: flex;
-  gap: var(--size-8);
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const Text = styled.p`
-  font-size: var(--size-20);
-  color: var(--color-dark);
-`;
-
-const Text700 = styled(Text)`
   font-weight: 700;
+  color: var(--color-dark2);
 `;
-
-const ButtonWrapper = styled.div`
-  display: flex;
-  gap: var(--size-10);
-`;
-
-const Button = styled.button<{ active: boolean }>`
-  outline: none;
-  appearance: none;
-  border: none;
-  padding: var(--size-4) var(--size-12);
-  border-radius: var(--size-24);
-  background-color: ${(props) =>
-    props.active ? "var(--color-blue)" : "var(--color-white)"};
-  color: ${(props) =>
-    props.active ? "var(--color-white)" : "var(--color-dark2)"};
-  cursor: pointer;
-`;
-
-type ButtonItem = {
-  name: string;
-  isActive: boolean;
-  id: string;
-};
-
-const ButtonArr: ButtonItem[] = [
-  {
-    name: "Day",
-    isActive: false,
-    id: "day",
-  },
-  {
-    name: "Week",
-    isActive: false,
-    id: "week",
-  },
-  {
-    name: "Month",
-    isActive: false,
-    id: "month",
-  },
-];
 
 const MilesStatistics = () => {
-  const [buttonId, setButtonId] = useState<string>(ButtonArr["0"].id);
-
-  const renderButton = () => {
-    return ButtonArr.map((button) => (
-      <Button
-        active={button.id === buttonId}
-        onClick={() => setButtonId(button.id)}
-      >
-        {button.name}
-      </Button>
-    ));
-  };
-
   return (
     <Wrapper>
-      <TextWrapper>
-        <Text700>Miles</Text700>
-        <Text>Statistics</Text>
-      </TextWrapper>
-      <ButtonWrapper>{renderButton()}</ButtonWrapper>
+      <MilesText />
+      <Content>
+        <MilesButton />
+        <Text>256 Miles</Text>
+      </Content>
       <BarChartStatistics
         dataKey="value"
         data={data}
