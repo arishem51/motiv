@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BarChart, Bar, Cell } from "recharts";
+import { BarChart, Bar, Cell, Tooltip } from "recharts";
 import styled from "styled-components";
 
 type BarItem = {
@@ -15,6 +15,7 @@ type BarChartStatisticsProps = {
   dataKey: string;
   chartWidth: number;
   chartHeight: number;
+  gap?: number;
 };
 
 const BarChartStatistics = ({
@@ -23,6 +24,7 @@ const BarChartStatistics = ({
   dataKey,
   chartHeight,
   chartWidth,
+  gap = 36,
 }: BarChartStatisticsProps) => {
   const [activeBarId, setActiveBarId] = useState<string>("");
 
@@ -35,8 +37,7 @@ const BarChartStatistics = ({
 
   const renderItem = () => {
     return data?.map((item, index) => {
-      const offSetX =
-        barItemSize * index + (item?.isLine ? barItemSize / 2 : 0);
+      const offSetX = gap * index + (item?.isLine ? barItemSize / 2 : 0);
       return (
         <Cell
           key={item.id}
@@ -61,10 +62,10 @@ const BarChartStatistics = ({
         return null;
       }
 
-      const offsetX = index * barItemSize;
+      const offsetX = index * gap;
       return (
         <text
-          y="98%"
+          y="99%"
           x={offsetX}
           style={{
             fontSize: "var(--size-14)",
