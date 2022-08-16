@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { BarChart, Bar, Cell, Tooltip } from "recharts";
-import styled from "styled-components";
+import { BarChart, Bar, Cell } from "recharts";
 
 type BarItem = {
   id: string;
@@ -55,29 +54,21 @@ const BarChartStatistics = ({
     });
   };
 
-  const renderLabel = () => {
-    return data?.map((item, index) => {
-      // remove line item
-      if (index % 2 !== 0) {
-        return null;
-      }
-
-      const offsetX = index * gap;
-      return (
-        <text
-          y="99%"
-          x={offsetX}
-          style={{
-            fontSize: "var(--size-14)",
-            color: "var(--color-dark6)",
-            fontWeight: 400,
-            opacity: 0.7,
-          }}
-        >
-          {item.label}
-        </text>
-      );
-    });
+  const renderLabel = (props: any) => {
+    const result = data?.find((item) => item.id === props.id);
+    return (
+      <text
+        y="100%"
+        x={props.x}
+        style={{
+          fontSize: "var(--size-14)",
+          color: "var(--color-dark6)",
+          opacity: 0.5,
+        }}
+      >
+        {result?.label}
+      </text>
+    );
   };
 
   return (
@@ -87,8 +78,9 @@ const BarChartStatistics = ({
       data={data}
       margin={{ top: 0, left: 0, bottom: 20, right: 0 }}
     >
-      <Bar dataKey={dataKey}>{renderItem()}</Bar>
-      {renderLabel()}
+      <Bar dataKey={dataKey} label={renderLabel}>
+        {renderItem()}
+      </Bar>
     </BarChart>
   );
 };

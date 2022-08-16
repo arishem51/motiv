@@ -19,7 +19,7 @@ const data = [
     id: Math.floor(Math.random() * 100).toString(),
   },
   {
-    label: "Special",
+    label: "",
     value: 4000,
     isLine: true,
     id: Math.floor(Math.random() * 100).toString(),
@@ -30,7 +30,7 @@ const data = [
     id: Math.floor(Math.random() * 100).toString(),
   },
   {
-    label: "Special",
+    label: "",
     value: 4000,
     isLine: true,
     id: Math.floor(Math.random() * 100).toString(),
@@ -41,7 +41,7 @@ const data = [
     id: Math.floor(Math.random() * 100).toString(),
   },
   {
-    label: "Special",
+    label: "",
     value: 4000,
     isLine: true,
     id: Math.floor(Math.random() * 100).toString(),
@@ -52,7 +52,7 @@ const data = [
     id: Math.floor(Math.random() * 100).toString(),
   },
   {
-    label: "Special",
+    label: "",
     value: 4000,
 
     isLine: true,
@@ -64,7 +64,7 @@ const data = [
     id: Math.floor(Math.random() * 100).toString(),
   },
   {
-    label: "Special",
+    label: "",
     value: 4000,
     isLine: true,
     id: Math.floor(Math.random() * 100).toString(),
@@ -75,7 +75,7 @@ const data = [
     id: Math.floor(Math.random() * 100).toString(),
   },
   {
-    label: "Special",
+    label: "",
     value: 4000,
     isLine: true,
     id: Math.floor(Math.random() * 100).toString(),

@@ -10,7 +10,7 @@ const data = [
     id: "id-1",
   },
   {
-    label: "Special",
+    label: "",
     value: 4000,
     isLine: true,
     id: "id-1s",
@@ -21,7 +21,7 @@ const data = [
     id: "id-2",
   },
   {
-    label: "Special",
+    label: "",
     value: 4000,
     isLine: true,
     id: "id-2s",
@@ -32,7 +32,7 @@ const data = [
     id: "id-3",
   },
   {
-    label: "Special",
+    label: "",
     value: 4000,
     isLine: true,
     id: "id-3s",
@@ -43,7 +43,7 @@ const data = [
     id: "id-4",
   },
   {
-    label: "Special",
+    label: "",
     value: 4000,
 
     isLine: true,
@@ -55,7 +55,7 @@ const data = [
     id: "id-5",
   },
   {
-    label: "Special",
+    label: "",
     value: 4000,
     isLine: true,
     id: "id-5s",
@@ -66,7 +66,7 @@ const data = [
     id: "id-6",
   },
   {
-    label: "Special",
+    label: "",
     value: 4000,
     isLine: true,
     id: "id-6s",
@@ -111,7 +111,7 @@ const MilesStatistics = () => {
         dataKey="value"
         data={data}
         chartHeight={198}
-        chartWidth={400}
+        chartWidth={398}
       />
     </Wrapper>
   );
