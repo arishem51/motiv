@@ -13,6 +13,7 @@ const Wrapper = styled.div`
   justify-content: center;
   justify-items: center;
   flex: 1;
+  padding: var(--size-30);
 `;
 
 const Content = styled.div`
