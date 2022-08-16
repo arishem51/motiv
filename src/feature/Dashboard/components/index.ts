@@ -4,3 +4,4 @@ export * from "./ButtonGroupStatistics";
 export * from "./MilesStatistics";
 export * from "./CarStatistics";
 export * from "./Cards";
+export * from "./CarsRecommend";

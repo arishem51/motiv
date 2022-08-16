@@ -19,6 +19,10 @@ import { ReactComponent as Energy } from "./energy.svg";
 import { ReactComponent as Range } from "./range.svg";
 import { ReactComponent as BreakFluid } from "./breakFluid.svg";
 import { ReactComponent as TireWear } from "./tireWear.svg";
+import { ReactComponent as Recommend } from "./recommend.svg";
+import { ReactComponent as CarLoop } from "./carLoop.svg";
+import { ReactComponent as CarSettings } from "./carSettings.svg";
+import { ReactComponent as CarServices } from "./carServices.svg";
 
 export const Icons = {
   Message,
@@ -42,4 +46,8 @@ export const Icons = {
   Range,
   BreakFluid,
   TireWear,
+  Recommend,
+  CarLoop,
+  CarServices,
+  CarSettings,
 };

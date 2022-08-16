@@ -5,6 +5,7 @@ import {
   RangeCard,
   TireWearCard,
 } from "./components";
+import CarsRecommend from "./components/CarsRecommend";
 import CarStatistics from "./components/CarStatistics";
 import MilesStatistics from "./components/MilesStatistics";
 
@@ -20,6 +21,7 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: var(--size-30);
 `;
 
 const CardWrapper = styled.div`
@@ -28,7 +30,6 @@ const CardWrapper = styled.div`
 `;
 
 const StatisticsWrapper = styled.div`
-  margin-top: var(--size-24);
   display: flex;
   gap: var(--size-30);
 `;
@@ -47,6 +48,7 @@ const Dashboard = () => {
           <MilesStatistics />
           <CarStatistics />
         </StatisticsWrapper>
+        <CarsRecommend />
       </Content>
     </Wrapper>
   );
