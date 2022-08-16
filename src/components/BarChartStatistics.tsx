@@ -10,7 +10,7 @@ type BarItem = {
 
 type BarChartStatisticsProps = {
   barItemSize?: number;
-  data: BarItem[] | undefined;
+  data: BarItem[];
   dataKey: string;
   chartWidth: number;
   chartHeight: number;
@@ -29,10 +29,10 @@ const BarChartStatistics = ({
 
   // Data has transform with line
   const dataTransform = useMemo(() => {
-    let newData: BarItem[] = [];
-    if (!data || data.length === 0) {
+    if (data.length === 0) {
       return [];
     }
+    let newData: BarItem[] = [];
     const barValues = data.map((item) => item.value);
     const maximumValue = Math.max(...barValues);
     data.forEach((item) => {
@@ -44,7 +44,6 @@ const BarChartStatistics = ({
         isLine: true,
       });
     });
-    console.log(newData);
     return newData;
   }, [data]);
 
