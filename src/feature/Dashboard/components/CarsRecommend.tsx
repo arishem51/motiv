@@ -3,7 +3,7 @@ import Car, { CarProps } from "../../../components/Car";
 
 const Wrapper = styled.div`
   display: flex;
-  gap: var(--size-24);
+  justify-content: space-between;
 `;
 
 const CARS: CarProps[] = [

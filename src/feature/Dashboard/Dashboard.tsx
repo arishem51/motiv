@@ -14,39 +14,53 @@ const Wrapper = styled.div`
   justify-content: center;
   justify-items: center;
   flex: 1;
-  padding: var(--size-30);
+  padding: var(--size-24);
 `;
 
 const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: var(--size-30);
+  gap: var(--size-24);
 `;
 
 const CardWrapper = styled.div`
   display: flex;
-  gap: var(--size-30);
+  flex: 1;
+  justify-content: space-between;
+  gap: var(--size-24);
 `;
 
 const StatisticsWrapper = styled.div`
   display: flex;
-  gap: var(--size-30);
+  gap: var(--size-24);
+`;
+
+const Side = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-24);
 `;
 
 const Dashboard = () => {
   return (
     <Wrapper>
       <Content>
-        <CardWrapper>
-          <EnergyCard chartValue={45} />
-          <RangeCard chartValue={66} />
-          <BreakFluidCard chartValue={9} />
-          <TireWearCard chartValue={25} />
-        </CardWrapper>
         <StatisticsWrapper>
-          <MilesStatistics />
-          <CarStatistics />
+          <Side>
+            <CardWrapper>
+              <EnergyCard chartValue={45} />
+              <RangeCard chartValue={66} />
+            </CardWrapper>
+            <MilesStatistics />
+          </Side>
+          <Side>
+            <CardWrapper>
+              <BreakFluidCard chartValue={9} />
+              <TireWearCard chartValue={25} />
+            </CardWrapper>
+            <CarStatistics />
+          </Side>
         </StatisticsWrapper>
         <CarsRecommend />
       </Content>
