@@ -1,7 +1,9 @@
 import { Fragment } from "react";
 import styled from "styled-components";
 import { Icons } from "../assets";
+import { RouteNames } from "../services/react-router";
 import SideBarItem, { SideBarItemProps } from "./SideBarItem";
+import SignOutButton from "./SignOutButton";
 
 type Props = {
   listItem: SideBarItemProps[];
@@ -29,6 +31,9 @@ const Space = styled.div`
 const SideBar = ({ listItem }: Props) => {
   const renderItem = () => {
     return listItem.map((item, index) => {
+      if (item.routeName === RouteNames.SIGN_OUT) {
+        return <SignOutButton {...item} />;
+      }
       return (
         <Fragment key={item.title}>
           {index === 8 && <Space />}

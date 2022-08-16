@@ -1,29 +1,12 @@
-import { getAuth, signOut } from "firebase/auth";
-import React from "react";
-import { useMatch, useNavigate } from "react-router-dom";
+import React, { CSSProperties, isValidElement } from "react";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { RouteNames } from "../services/react-router";
 
 export type SideBarItemProps = {
   icon: React.ReactNode;
   title: string;
   routeName: string;
 };
-
-const Wrapper = styled.div<{ active: boolean }>`
-  display: flex;
-  padding: var(--size-8);
-  border-radius: 6px;
-  gap: 10px;
-  cursor: pointer;
-  min-width: 174px;
-  background-color: ${(props) => props.active && "var(--color-white2)"};
-  &:hover {
-    background-color: var(--color-white2);
-  }
-  transition: all 0.5s;
-  align-items: center;
-`;
 
 const Text = styled.p`
   color: var(--color-dark2);
@@ -32,22 +15,32 @@ const Text = styled.p`
   text-decoration: none;
 `;
 
+const sideBarItemStyles: CSSProperties = {
+  display: "flex",
+  padding: " var(--size-8)",
+  borderRadius: "var(--size-6)",
+  gap: "var(--size-10)",
+  cursor: "pointer",
+  minWidth: "174px",
+  textDecoration: "none",
+};
+const activeStyle: CSSProperties = {
+  ...sideBarItemStyles,
+  backgroundColor: "var(--color-white2)",
+};
+const inActiveStyle = {
+  ...sideBarItemStyles,
+};
+
 const SideBarItem = ({ icon, title, routeName }: SideBarItemProps) => {
-  const active = useMatch(routeName);
-  const navigate = useNavigate();
-  const handleClick = () => {
-    if (routeName === RouteNames.SIGN_OUT) {
-      const auth = getAuth();
-      signOut(auth);
-      return;
-    }
-    navigate(routeName);
-  };
   return (
-    <Wrapper active={!!active} onClick={handleClick}>
-      {icon}
+    <NavLink
+      to={routeName}
+      style={({ isActive }) => (isActive ? activeStyle : inActiveStyle)}
+    >
+      {!!icon && isValidElement(icon) && icon}
       <Text>{title}</Text>
-    </Wrapper>
+    </NavLink>
   );
 };
 
