@@ -38,7 +38,7 @@ const Button = styled.button<{ isSelected: boolean; activeColor: string }>`
   outline: none;
   appearance: none;
   border: none;
-  padding: var(--size-6) var(--size-12);
+  padding: var(--size-4) var(--size-12);
   border-radius: var(--size-14);
   cursor: pointer;
   background-color: ${(props) =>

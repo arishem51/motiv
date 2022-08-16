@@ -1,10 +1,12 @@
 import styled from "styled-components";
-import BarChartStatistics from "../../components/BarChartStatistics";
-import { BreakFluidCard } from "./components/BreakFluidCard";
-import { EnergyCard } from "./components/EnergyCard";
+import {
+  BreakFluidCard,
+  EnergyCard,
+  RangeCard,
+  TireWearCard,
+} from "./components";
+import CarStatistics from "./components/CarStatistics";
 import MilesStatistics from "./components/MilesStatistics";
-import { RangeCard } from "./components/RangeCard";
-import { TireWearCard } from "./components/TireWearCard";
 
 const Wrapper = styled.div`
   display: flex;
@@ -26,6 +28,8 @@ const CardWrapper = styled.div`
 
 const StatisticsWrapper = styled.div`
   margin-top: var(--size-24);
+  display: flex;
+  gap: var(--size-30);
 `;
 
 const Dashboard = () => {
@@ -40,6 +44,7 @@ const Dashboard = () => {
         </CardWrapper>
         <StatisticsWrapper>
           <MilesStatistics />
+          <CarStatistics />
         </StatisticsWrapper>
       </Content>
     </Wrapper>

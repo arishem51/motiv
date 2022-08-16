@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import BarChartStatistics from "../../../components/BarChartStatistics";
+import ButtonGroupStatistics from "./ButtonGroupStatistics";
 import HeaderTextStatistics from "./HeaderTextStatistics";
-import MilesButton from "./MilesButton";
 
 const data = [
   {
@@ -82,9 +82,10 @@ const Wrapper = styled.div`
   padding: var(--size-16) var(--size-32);
   background-color: var(--color-white);
   border-radius: var(--size-14);
-  gap: var(--size-12);
+  gap: var(--size-14);
   display: flex;
   flex-direction: column;
+  flex: 1;
 `;
 
 const Content = styled.div`
@@ -103,7 +104,7 @@ const MilesStatistics = () => {
     <Wrapper>
       <HeaderTextStatistics title="Miles" />
       <Content>
-        <MilesButton />
+        <ButtonGroupStatistics />
         <Text>256 Miles</Text>
       </Content>
       <BarChartStatistics

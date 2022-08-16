@@ -71,6 +71,7 @@ const BarChartStatistics = ({
             fontSize: "var(--size-14)",
             color: "var(--color-dark6)",
             fontWeight: 400,
+            opacity: 0.7,
           }}
         >
           {item.label}
