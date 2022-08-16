@@ -5,74 +5,43 @@ import HeaderTextStatistics from "./HeaderTextStatistics";
 
 const data = [
   {
-    label: "1 PM",
+    name: "1 PM",
     value: 4000,
     id: "id-1",
   },
+
   {
-    label: "",
-    value: 4000,
-    isLine: true,
-    id: "id-1s",
-  },
-  {
-    label: "2 PM",
+    name: "2 PM",
     value: 3000,
     id: "id-2",
   },
+
   {
-    label: "",
-    value: 4000,
-    isLine: true,
-    id: "id-2s",
-  },
-  {
-    label: "3 PM",
+    name: "3 PM",
     value: 2000,
     id: "id-3",
   },
+
   {
-    label: "",
-    value: 4000,
-    isLine: true,
-    id: "id-3s",
-  },
-  {
-    label: "4 PM",
+    name: "4 PM",
     value: 2780,
     id: "id-4",
   },
-  {
-    label: "",
-    value: 4000,
 
-    isLine: true,
-    id: "id-4s",
-  },
   {
-    label: "5 PM",
+    name: "5 PM",
     value: 1890,
     id: "id-5",
   },
+
   {
-    label: "",
-    value: 4000,
-    isLine: true,
-    id: "id-5s",
-  },
-  {
-    label: "6 PM",
+    name: "6 PM",
     value: 2390,
     id: "id-6",
   },
+
   {
-    label: "",
-    value: 4000,
-    isLine: true,
-    id: "id-6s",
-  },
-  {
-    label: "7 PM",
+    name: "7 PM",
     value: 3490,
     id: "id-7",
   },

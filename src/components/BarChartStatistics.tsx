@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { BarChart, Bar, Cell } from "recharts";
 
 type BarItem = {
   id: string;
-  label?: string;
+  name: string;
   isLine?: boolean;
   value: number;
 };
@@ -19,13 +19,34 @@ type BarChartStatisticsProps = {
 
 const BarChartStatistics = ({
   barItemSize = 28,
-  data,
+  data = [],
   dataKey,
   chartHeight,
   chartWidth,
   gap = 36,
 }: BarChartStatisticsProps) => {
   const [activeBarId, setActiveBarId] = useState<string>("");
+
+  // Data has transform with line
+  const dataTransform = useMemo(() => {
+    let newData: BarItem[] = [];
+    if (!data || data.length === 0) {
+      return [];
+    }
+    const barValues = data.map((item) => item.value);
+    const maximumValue = Math.max(...barValues);
+    data.forEach((item) => {
+      newData.push(item);
+      newData.push({
+        name: " ",
+        id: `${item.id}-s`,
+        value: maximumValue,
+        isLine: true,
+      });
+    });
+    console.log(newData);
+    return newData;
+  }, [data]);
 
   const handleClick = (item: BarItem) => {
     if (item?.isLine) {
@@ -35,7 +56,7 @@ const BarChartStatistics = ({
   };
 
   const renderItem = () => {
-    return data?.map((item, index) => {
+    return dataTransform?.map((item, index) => {
       const offSetX = gap * index + (item?.isLine ? barItemSize / 2 : 0);
       return (
         <Cell
@@ -55,7 +76,7 @@ const BarChartStatistics = ({
   };
 
   const renderLabel = (props: any) => {
-    const result = data?.find((item) => item.id === props.id);
+    const result = dataTransform?.find((item) => item.id === props.id);
     return (
       <text
         y="100%"
@@ -66,7 +87,7 @@ const BarChartStatistics = ({
           opacity: 0.5,
         }}
       >
-        {result?.label}
+        {result?.name}
       </text>
     );
   };
@@ -75,7 +96,7 @@ const BarChartStatistics = ({
     <BarChart
       width={chartWidth}
       height={chartHeight}
-      data={data}
+      data={dataTransform}
       margin={{ top: 0, left: 0, bottom: 20, right: 0 }}
     >
       <Bar dataKey={dataKey} label={renderLabel}>
