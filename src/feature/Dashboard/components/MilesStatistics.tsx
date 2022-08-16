@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import BarChartStatistics from "../../../components/BarChartStatistics";
+import HeaderTextStatistics from "./HeaderTextStatistics";
 import MilesButton from "./MilesButton";
-import MilesText from "./MilesText";
 
 const data = [
   {
@@ -101,7 +101,7 @@ const Text = styled.p`
 const MilesStatistics = () => {
   return (
     <Wrapper>
-      <MilesText />
+      <HeaderTextStatistics title="Miles" />
       <Content>
         <MilesButton />
         <Text>256 Miles</Text>
