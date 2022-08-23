@@ -10,7 +10,7 @@ type Props = {
 };
 
 const Wrapper = styled.div`
-  height: 100vh;
+  height: auto;
   padding: var(--size-24) var(--size-30);
   display: flex;
   flex-direction: column;
