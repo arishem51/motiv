@@ -5,7 +5,7 @@ const TopBarAvatar = () => {
   const { user, isLoading } = useAuth();
 
   return (
-    <Avatar isLoading={isLoading} imageConfig={user?.userDB.imageConfig} />
+    <Avatar isLoading={isLoading} imageConfig={user?.userDB?.imageConfig} />
   );
 };
 
